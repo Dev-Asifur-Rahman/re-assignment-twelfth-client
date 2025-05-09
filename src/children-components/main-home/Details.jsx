@@ -57,6 +57,7 @@ const Details = () => {
         age,
         number,
         payment_status: false,
+        confirmation_status :false
       };
 
       ApiInstance.post("/register-campaign", registration_object)
