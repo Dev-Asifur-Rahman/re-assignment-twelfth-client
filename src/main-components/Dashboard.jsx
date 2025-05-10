@@ -3,6 +3,7 @@ import InterceptorProvider from "../components/InterceptorProvider";
 import { Context } from "../js/context";
 import LottieSpinner from "../components/LottieSpinner";
 import { NavLink, Outlet, useLocation } from "react-router";
+import { CiMenuBurger } from "react-icons/ci";
 
 const Dashboard = () => {
   const { role, loading } = useContext(Context);
@@ -128,7 +129,7 @@ const Dashboard = () => {
           {role ? (
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn m-1">
-                Click
+                <CiMenuBurger />
               </div>
               <ul
                 tabIndex={0}
@@ -155,7 +156,7 @@ const Dashboard = () => {
           ) : (
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn m-1">
-                Click
+                <CiMenuBurger></CiMenuBurger>
               </div>
               <ul
                 tabIndex={0}
@@ -165,13 +166,17 @@ const Dashboard = () => {
                   <NavLink to={"/dashboard/analytics"}>Analytics</NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/dashboard/participant-profile"}>Profile</NavLink>
+                  <NavLink to={"/dashboard/participant-profile"}>
+                    Profile
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink to={"/dashboard/history"}>Payment History</NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/dashboard/user-registered-camps"}>Registerd Camps</NavLink>
+                  <NavLink to={"/dashboard/user-registered-camps"}>
+                    Registerd Camps
+                  </NavLink>
                 </li>
               </ul>
             </div>

@@ -28,6 +28,20 @@ const ManageRegisteredCamps = () => {
       }
     }
   };
+  const deleteRegistration = (id, campId) => {
+    swalConfirm("Delete Registration?").then((result) => {
+      if (result.isConfirmed) {
+        ApiInstance.delete(`/cancel-registration/${id}?campId=${campId}`).then(
+          (result) => {
+            if (result.data.acknowledged) {
+              swalSuccess("Deleted Successfully");
+              refetch();
+            }
+          }
+        );
+      }
+    });
+  };
   if (isPending) {
     return <LottieSpinner></LottieSpinner>;
   } else {
@@ -56,24 +70,39 @@ const ManageRegisteredCamps = () => {
                     <td>{user?.camp_name}</td>
                     <td>{user?.camp_fee} TK</td>
                     <td>{user?.payment_status === true ? "Paid" : "Unpaid"}</td>
-                    <td
-                      onClick={() =>
-                        showModal(
-                          user?.payment_status,
-                          user?._id,
-                          user?.confirmation_status
-                        )
-                      }
-                    >
-                      {user?.confirmation_status === true
-                        ? "Confirmed"
-                        : "Pending"}
+                    <td>
+                      <p
+                        className="w-fit"
+                        onClick={() =>
+                          showModal(
+                            user?.payment_status,
+                            user?._id,
+                            user?.confirmation_status
+                          )
+                        }
+                      >
+                        {user?.confirmation_status === true
+                          ? "Confirmed"
+                          : "Pending"}
+                      </p>
                     </td>
                     <td className=" flex justify-center items-center">
                       {user?.confirmation_status === true ? (
-                        <IoMdCheckmarkCircleOutline />
+                        <button className="">
+                          <IoMdCheckmarkCircleOutline />
+                        </button>
                       ) : (
-                        <RxCross2 />
+                        <button
+                          onClick={() =>
+                            deleteRegistration(user?._id, user?.campId)
+                          }
+                          disabled={
+                            user?.payment_status && user?.confirmation_status
+                          }
+                          className=""
+                        >
+                          <RxCross2 />
+                        </button>
                       )}
                     </td>
                   </tr>

@@ -36,7 +36,7 @@ const HomeCard = ({ camp }) => {
             </p>
           </div>
           <div className="w-full flex justify-end">
-            <button className="btn btn-sm btn-primary">join Camp</button>
+            <button className="btn btn-sm text-white bg-linear-to-bl from-violet-500 to-fuchsia-500">join Camp</button>
           </div>
         </div>
       </div>
