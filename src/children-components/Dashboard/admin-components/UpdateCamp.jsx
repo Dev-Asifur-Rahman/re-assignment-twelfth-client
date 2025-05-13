@@ -1,20 +1,24 @@
 import React, { useState } from "react";
-import "cally";
-import CallyCalender from "../../../components/CallyCalender";
-import { swalSuccess, toastError, toastSuccess } from "../../../js/utils";
+import { useLocation, useNavigate } from "react-router";
 import { imageUpload } from "../../../js/imageupload";
+import { swalError, swalSuccess, toastError } from "../../../js/utils";
 import { ApiInstance } from "../../../js/api-instance";
-import useAllCamp from './../../../hook/useAllCamp';
+import CallyCalender from "../../../components/CallyCalender";
+import useAllCamp from "../../../hook/useAllCamp";
 
-const AddCamp = () => {
+const UpdateCamp = () => {
+  const location = useLocation();
+  const navigate = useNavigate()
   const {refetch} = useAllCamp()
+  const camp_object = location?.state;
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [calenderDate, setCalenderDate] = useState("Pick a Date");
 
-  const add_camp = async (e) => {
+  const update_camp = async (e) => {
     e.preventDefault();
     setLoading(true);
+    let final_image = camp_object?.image 
     const target = e.target;
     const camp_name = target.camp_name.value;
     const imageFile = target.image.files[0];
@@ -23,44 +27,47 @@ const AddCamp = () => {
     const professional_name = target.professional_name.value;
     const participants = parseInt(target.participants.value);
     const description = target.description.value;
-    if (calenderDate === "Pick a Date") {
-      setLoading(false);
-      return toastError("Enter Date");
-    } else {
-      const image = await imageUpload(imageFile);
-      if (!image) {
-        setLoading(false);
-        return toastError("Image upload failed.");
-      } else {
-        const appointment_date = calenderDate
-        const camp_data = {
-          camp_name,
-          image,
-          camp_fee,
-          appointment_date,
-          location,
-          professional_name,
-          participants,
-          description,
-        };
-        ApiInstance.post("/upload-camp", camp_data).then((res) => {
-          if (res.data.acknowledged) {
-            setLoading(false);
-            target.reset()
-            swalSuccess("New Camp Added")
-            refetch()
-          } else {
-            setLoading(false);
-            toastError("Something Went Wrong.Try Again!");
-          }
-        });
+    if (imageFile) {
+      const uploaded_image = await imageUpload(imageFile);
+
+      if(!uploaded_image){
+        setLoading(false)
+        return toastError("Image Upload Failed")
       }
+      final_image = uploaded_image
     }
+    if(calenderDate === "Pick a Date"){
+        setLoading(false)
+        return toastError("Enter Date")
+    }
+    const appointment_date = calenderDate;
+    const camp_data = {
+      camp_name,
+      image:final_image,
+      camp_fee,
+      appointment_date,
+      location,
+      professional_name,
+      participants,
+      description,
+    };
+    ApiInstance.patch(`/update-camp/${camp_object?._id}`, camp_data).then((res) => {
+      if (res.data.acknowledged) {
+        setLoading(false);
+        target.reset();
+        swalSuccess("Camp-Updated");
+        refetch()
+        navigate("/dashboard/manage-camps")
+      } else {
+        setLoading(false);
+        toastError("Something Went Wrong.Try Again!");
+      }
+    });
   };
 
   return (
     <div className="w-full">
-      <form onSubmit={add_camp} className="border px-6">
+      <form onSubmit={update_camp} className="border px-6">
         <fieldset
           id="camp-div"
           className="fieldset w-full grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-2 place-items-center"
@@ -71,6 +78,7 @@ const AddCamp = () => {
               required
               type="text"
               name="camp_name"
+              defaultValue={camp_object?.camp_name}
               className="input"
               placeholder="Camp Name"
             />
@@ -78,7 +86,7 @@ const AddCamp = () => {
 
           <div>
             <legend className="fieldset-legend">Image URL</legend>
-            <input type="file" required className="file-input" name="image" />
+            <input type="file" className="file-input" name="image" />
           </div>
 
           <div>
@@ -88,6 +96,7 @@ const AddCamp = () => {
               type="text"
               name="camp_fee"
               className="input"
+              defaultValue={camp_object?.camp_fee}
               placeholder="Camp Fee"
             />
           </div>
@@ -116,6 +125,7 @@ const AddCamp = () => {
               type="text"
               name="location"
               className="input"
+              defaultValue={camp_object?.location}
               placeholder="Location "
             />
           </div>
@@ -129,6 +139,7 @@ const AddCamp = () => {
               required
               type="text"
               className="input"
+              defaultValue={camp_object?.professional_name}
               placeholder="Professional Name"
             />
           </div>
@@ -140,8 +151,8 @@ const AddCamp = () => {
               readOnly
               name="participants"
               className="input"
+              defaultValue={camp_object?.participants ?? 0}
               placeholder="Total Participants"
-              value={0}
             />
           </div>
           <div>
@@ -150,6 +161,7 @@ const AddCamp = () => {
               type="text"
               name="description"
               className="input"
+              defaultValue={camp_object?.description}
               placeholder="Description"
             />
           </div>
@@ -166,4 +178,4 @@ const AddCamp = () => {
   );
 };
 
-export default AddCamp;
+export default UpdateCamp;

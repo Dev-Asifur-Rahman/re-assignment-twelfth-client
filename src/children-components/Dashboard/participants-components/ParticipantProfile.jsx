@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../../../js/context";
 
-const ParticipantProfile = () => {
+const OrganizerProfile = () => {
   const { user, role } = useContext(Context);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <div className="min-h-screen bg-gradient-to-bl from-violet-500 to-fuchsia-500 p-8 flex items-center justify-center">
-      {/* Profile Section with Glass Effect */}
-      <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg p-6 max-w-lg w-full border border-white/20">
-        {/* Profile Image */}
+    <div className="relative min-h-screen bg-gradient-to-bl from-violet-500 to-fuchsia-500 p-8 flex items-center justify-center">
+      {/* Profile Section */}
+      <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg p-6 max-w-lg w-full border border-white/20 z-10">
         <div className="flex justify-center mb-6">
           <img
             src={user?.photoURL}
@@ -16,58 +17,61 @@ const ParticipantProfile = () => {
           />
         </div>
 
-        {/* Profile Info */}
         <div className="text-center">
-          {/* Gradient Text for Name */}
           <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
             {user?.displayName}
           </h1>
 
-          {/* Role (User/Admin) */}
           <div className="mt-2 text-sm sm:text-base font-medium text-gray-600">
             <p>
-              Role:{" "}
-              <span className="text-violet-600">{!role && "Participant"}</span>
+              Role: <span className="text-violet-600">{role?"Unknown":"Participant"}</span>
             </p>
           </div>
 
           <div className="mt-4">
-            <h3 className="text-lg sm:text-xl font-medium text-violet-600">
-              Email
-            </h3>
+            <h3 className="text-lg sm:text-xl font-medium text-violet-600">Email</h3>
             <p className="text-sm sm:text-lg text-gray-700">{user?.email}</p>
           </div>
 
           <div className="mt-4">
-            <h3 className="text-lg sm:text-xl font-medium text-violet-600">
-              Phone
-            </h3>
+            <h3 className="text-lg sm:text-xl font-medium text-violet-600">Phone</h3>
             <p className="text-sm sm:text-lg text-gray-700">
-              {user?.phoneNumber ? user?.phoneNumber : "N/A"}
+              {user?.phoneNumber ? user.phoneNumber : "N/A"}
             </p>
           </div>
 
-          <button  onClick={() => document.getElementById("my_modal_1").showModal()} className="mt-6 w-full py-2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-lg hover:from-violet-600 hover:to-fuchsia-600 transition">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="mt-6 w-full py-2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-lg hover:from-violet-600 hover:to-fuchsia-600 transition"
+          >
             Update Profile
           </button>
         </div>
       </div>
-      <dialog id="my_modal_1" className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">
-            Press ESC key or click the button below to close
-          </p>
-          <div className="modal-action">
-            <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button className="btn">Close</button>
-            </form>
+
+      {/* Modal Overlay + Content */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 flex items-center justify-center z-50 bg-black/30 backdrop-blur-sm"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div
+            className="bg-white rounded-lg shadow-xl p-6 w-11/12 max-w-md"
+            onClick={(e) => e.stopPropagation()} // Prevent closing on modal click
+          >
+            <h3 className="text-xl font-bold mb-4">Update Profile</h3>
+            <p className="text-gray-700 mb-4">You can add your form here later.</p>
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="mt-2 px-4 py-2 bg-violet-500 text-white rounded hover:bg-violet-600"
+            >
+              Close
+            </button>
           </div>
         </div>
-      </dialog>
+      )}
     </div>
   );
 };
 
-export default ParticipantProfile;
+export default OrganizerProfile;

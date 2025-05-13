@@ -2,16 +2,38 @@ import useAllCamp from "../../../hook/useAllCamp";
 import { LiaEdit } from "react-icons/lia";
 import { AiOutlineDelete } from "react-icons/ai";
 import LottieSpinner from "../../../components/LottieSpinner";
+import { ApiInstance } from "../../../js/api-instance";
+import { swalConfirm, swalError, swalSuccess } from "../../../js/utils";
+import { useNavigate } from "react-router";
 
 const ManageCamps = () => {
   const { all_camps, isPending, refetch } = useAllCamp();
+  const navigate = useNavigate()
 
   const updateCamp = (camp) => {
-    console.log(camp);
+    swalConfirm("Update This Camp ?").then(result=>{
+      if(result.isConfirmed){
+        navigate("/dashboard/update-camp",{state:camp})
+      }
+    })
   };
   const deleteCamp = (id) => {
-    console.log(id);
+    swalConfirm("Are You Sure?").then((result) => {
+      if (result.isConfirmed) {
+        ApiInstance.delete(`/delete-camp/${id}`)
+          .then((res) => {
+            if (res.data.acknowledged) {
+              swalSuccess("Camp Removed Successfully");
+              refetch();
+            }
+          })
+          .catch((error) => {
+            swalError("Error Occured", "Something went Wrong!");
+          });
+      }
+    });
   };
+
   if (isPending) {
     return <LottieSpinner></LottieSpinner>;
   } else {

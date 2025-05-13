@@ -17,6 +17,7 @@ import Analytics from "./children-components/Dashboard/participants-components/A
 import ParticipantProfile from "./children-components/Dashboard/participants-components/ParticipantProfile";
 import PaymentHistory from "./children-components/Dashboard/participants-components/PaymentHistory";
 import ManageRegisteredCamps from "./children-components/Dashboard/admin-components/ManageRegisteredCamps";
+import UpdateCamp from "./children-components/Dashboard/admin-components/UpdateCamp";
 
 export const router = createBrowserRouter([
   {
@@ -114,6 +115,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <RegisteredCamps></RegisteredCamps>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "update-camp",
+        element: (
+          <PrivateRoute>
+            <UpdateCamp></UpdateCamp>
           </PrivateRoute>
         ),
       },
