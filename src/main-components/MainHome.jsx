@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { Context } from "../js/context";
 import LottieSpinner from "../components/LottieSpinner";
 import InterceptorProvider from "../components/InterceptorProvider";
+import Footer from "../components/Footer";
+import ScrollToTop from "../ScrollToTop";
 
 const MainHome = () => {
   const { loading } = useContext(Context);
@@ -14,7 +16,9 @@ const MainHome = () => {
       ) : (
         <>
           <NavBar></NavBar>
+          <ScrollToTop></ScrollToTop>
           <Outlet></Outlet>
+          <Footer></Footer>
           <InterceptorProvider></InterceptorProvider>
         </>
       )}

@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "react-router";
 
 const HomeCard = ({ camp }) => {
   const {
+    _id,
     camp_name,
     image,
     appointment_date,
@@ -36,7 +38,7 @@ const HomeCard = ({ camp }) => {
             </p>
           </div>
           <div className="w-full flex justify-end">
-            <button className="btn btn-sm text-white bg-linear-to-bl from-violet-500 to-fuchsia-500">join Camp</button>
+            <button className="btn btn-sm text-white bg-linear-to-bl from-violet-500 to-fuchsia-500"><Link to={`/camp-details/${_id}`}>join Camp</Link> </button>
           </div>
         </div>
       </div>

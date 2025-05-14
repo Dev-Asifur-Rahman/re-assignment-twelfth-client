@@ -7,6 +7,7 @@ import { auth } from "./js/firebase-auth";
 import { onAuthStateChanged } from "firebase/auth";
 import { ApiInstance } from "./js/api-instance";
 import { Toaster } from "react-hot-toast";
+import ScrollToTop from "./ScrollToTop";
 function App() {
   // states
   const [user, setUser] = useState(null);

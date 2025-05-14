@@ -99,7 +99,7 @@ const NavBar = () => {
         ) : (
           <button
             onClick={sendLogin}
-            className="btn bg-linear-to-bl from-violet-500 to-fuchsia-500"
+            className="btn text-white bg-linear-to-bl from-violet-500 to-fuchsia-500"
           >
             Join Us
           </button>
