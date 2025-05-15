@@ -7,7 +7,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 
-const googleProvider = new GoogleAuthProvider()
+const googleProvider = new GoogleAuthProvider();
 
 import { auth } from "./firebase-auth";
 
@@ -23,9 +23,9 @@ const logoutUser = () => {
   return signOut(auth);
 };
 
-const googleSignIn = async() =>{
-  return signInWithPopup(auth,googleProvider)
-}
+const googleSignIn = async () => {
+  return signInWithPopup(auth, googleProvider);
+};
 
 const setProfile = (name, image) => {
   return updateProfile(auth.currentUser, {
@@ -34,4 +34,18 @@ const setProfile = (name, image) => {
   });
 };
 
-export { createUser, loginUser, logoutUser, setProfile,googleSignIn };
+const update_Profile = (name, image, number) => {
+  return updateProfile(auth.currentUser, {
+    displayName: name,
+    photoURL: image
+  });
+};
+
+export {
+  createUser,
+  loginUser,
+  logoutUser,
+  setProfile,
+  googleSignIn,
+  update_Profile,
+};

@@ -1,46 +1,46 @@
 import React from "react";
+import useUserPaymentHistory from "../../../hook/useUserPaymentHistory";
+import NoDataUI from "../../../components/NoDataUI";
 
 const PaymentHistory = () => {
-  return (
-    <div>
-      <div className="overflow-x-auto">
-        <table className="table table-zebra">
-          {/* head */}
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-            </tr>
-            {/* row 2 */}
-            <tr>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-            {/* row 3 */}
-            <tr>
-              <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
-            </tr>
-          </tbody>
-        </table>
+  const { data, isPending } = useUserPaymentHistory();
+  if (data?.length === 0) {
+    return <NoDataUI></NoDataUI>;
+  } else {
+    return (
+      <div>
+        <div className="overflow-x-auto">
+          <table className="table table-zebra">
+            {/* head */}
+            <thead>
+              <tr>
+                <th></th>
+                <th>Camp Name</th>
+                <th>Fee</th>
+                <th>Transaction No</th>
+                <th>Date</th>
+                <th>Payment Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data?.map((payment, index) => {
+                return (
+                  <tr key={payment?._id}>
+                    <th>{index+1}</th>
+                    <td>{payment?.camp_name}</td>
+                    <td>{payment?.fee}</td>
+                    <td>{payment?.transactionId}</td>
+                    <td>{payment?.date}</td>
+                    <td>{payment?.payment_status && "Paid"}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default PaymentHistory;

@@ -32,7 +32,9 @@ const NavBar = () => {
       <div id="nav-text" className="navbar-center hidden lg:flex">
         <div className="flex items-center gap-x-4">
           <NavLink to={"/"}>Home</NavLink>
-          <NavLink to={"available-camps"}>Available Camps</NavLink>
+          <NavLink to={"/available-camps"}>Available Camps</NavLink>
+          {!role && <NavLink to={"/dashboard/analytics"}>Dashboard</NavLink>}
+          {role && <NavLink to={"/dashboard/analytics"}>Dashboard</NavLink>}
         </div>
         {/* <ul className="menu menu-horizontal px-1">
           <li></li>

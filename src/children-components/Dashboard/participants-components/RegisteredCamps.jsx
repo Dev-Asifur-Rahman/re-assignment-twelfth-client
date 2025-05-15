@@ -4,12 +4,21 @@ import LottieSpinner from "../../../components/LottieSpinner";
 import useUserRegisteredCamps from "../../../hook/useUserRegisteredCamps";
 import { AiOutlineDelete } from "react-icons/ai";
 import { ApiInstance } from "../../../js/api-instance";
+import { useNavigate } from "react-router";
 
 const RegisteredCamps = () => {
   const { user } = useContext(Context);
+  const navigate = useNavigate();
+
+  const payment_route = (camp) => {
+    navigate("/dashboard/registration-payment",{state:{camp}});
+  };
+
   function deleteRegistration(id, campId) {
-    const object = {id,campId}
-    ApiInstance.delete("/reject-registration",{data:object}).then(res=>refetch())
+    const object = { id, campId };
+    ApiInstance.delete("/reject-registration", { data: object }).then((res) =>
+      refetch()
+    );
   }
 
   const {
@@ -32,7 +41,7 @@ const RegisteredCamps = () => {
                 <th>Camp Fee</th>
                 <th>Name</th>
                 <th className="text-center">Payment Status</th>
-                <th>Confirmation Status</th>
+                <th className="text-center">Confirmation Status</th>
                 <th className=" text-center">Cancel</th>
                 <th className="text-center">Feedback</th>
               </tr>
@@ -47,39 +56,44 @@ const RegisteredCamps = () => {
                     <td>{user?.camp_fee} TK</td>
                     <td>
                       <p className="text-center w-full">
-                        {user?.payment_status === true ? "Paid" : "Pay"}
+                        {user?.payment_status === true ? (
+                          "Paid"
+                        ) : (
+                          <button
+                            className="btn btn-sm text-white bg-linear-to-bl from-violet-500 to-fuchsia-500"
+                            onClick={()=>payment_route(user)}
+                          >
+                            Pay
+                          </button>
+                        )}
                       </p>
                     </td>
-                    <td>
+                    <td className="">
                       <p
-                      // className="w-fit"
-                      // onClick={() =>
-                      //   showModal(
-                      //     user?.payment_status,
-                      //     user?._id,
-                      //     user?.confirmation_status
-                      //   )
-                      // }
+                        className="w-full text-center"
+                        
                       >
                         {user?.confirmation_status === true
                           ? "Confirmed"
                           : "Pending"}
                       </p>
                     </td>
-                    <td className=" flex justify-center items-center">
-                      <button
-                        className="flex justify-center"
-                        onClick={() =>
-                          deleteRegistration(user?._id, user?.campId)
-                        }
-                      >
-                        <AiOutlineDelete />
-                      </button>
+                    <td className="">
+                      <div className="w-full flex justify-center">
+                        <button
+                          className="flex justify-center"
+                          onClick={() =>
+                            deleteRegistration(user?._id, user?.campId)
+                          }
+                        >
+                          <AiOutlineDelete />
+                        </button>
+                      </div>
                     </td>
                     <td className="">
                       {user?.payment_status === true ? (
                         <button
-                          disabled={!confirmation_status}
+                          disabled={user && user.confirmation_status === false}
                           className="btn btn-sm text-white bg-linear-to-bl from-violet-500 to-fuchsia-500"
                         >
                           Feedback

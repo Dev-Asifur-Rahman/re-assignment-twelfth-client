@@ -1,16 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useAllCamp from "../../hook/useAllCamp";
 import CampCard from "../../components/CampCard";
 
 const AvailableCamps = () => {
-  const { all_camps, isPending, refetch } = useAllCamp();
+  const { all_camps, isPending } = useAllCamp();
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOption, setSortOption] = useState("default");
+
+  const [isThreeColumn, setIsThreeColumn] = useState(true); // layout state
+
   const campsPerPage = 6;
 
-  const totalPages = Math.ceil(all_camps.length / campsPerPage);
+  const filteredCamps = all_camps
+    .filter((camp) => {
+      const query = searchQuery.toLowerCase();
+      return (
+        camp.camp_name.toLowerCase().includes(query) ||
+        camp.location.toLowerCase().includes(query) ||
+        camp.professional_name.toLowerCase().includes(query) ||
+        camp.description.toLowerCase().includes(query)
+      );
+    })
+    .sort((a, b) => {
+      if (sortOption === "mostRegistered") {
+        return b.participants - a.participants;
+      }
+      if (sortOption === "campFees") {
+        return a.camp_fee - b.camp_fee;
+      }
+      if (sortOption === "alphabetical") {
+        return a.camp_name.localeCompare(b.camp_name);
+      }
+      return 0;
+    });
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, sortOption]);
+
+  const totalPages = Math.ceil(filteredCamps.length / campsPerPage);
   const indexOfLastCamp = currentPage * campsPerPage;
   const indexOfFirstCamp = indexOfLastCamp - campsPerPage;
-  const currentCamps = all_camps.slice(indexOfFirstCamp, indexOfLastCamp);
+  const currentCamps = filteredCamps.slice(indexOfFirstCamp, indexOfLastCamp);
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) setCurrentPage(page);
@@ -32,7 +64,6 @@ const AvailableCamps = () => {
         );
       }
     } else {
-      // Always show first
       pageButtons.push(
         <button
           key={1}
@@ -73,7 +104,6 @@ const AvailableCamps = () => {
         );
       }
 
-      // Always show last
       pageButtons.push(
         <button
           key={totalPages}
@@ -90,38 +120,59 @@ const AvailableCamps = () => {
 
   return (
     <>
-      {/* Search Bar (no functionality) */}
-      <div className="w-full flex justify-center my-4">
-        <label className="input w-fit flex items-center gap-2 border px-3 py-2 rounded">
-          <svg
-            className="h-5 w-5 opacity-50"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <g
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth="2.5"
-              fill="none"
-              stroke="currentColor"
-            >
+      {/* data query div  */}
+      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 px-4 my-4">
+        {/* Search Bar */}
+        <label className="input lg:w-[250px] w-full md:w-[200px] flex items-center gap-2 border px-3 py-2 rounded">
+          <svg className="h-5 w-5 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor">
               <circle cx="11" cy="11" r="8"></circle>
               <path d="m21 21-4.3-4.3"></path>
             </g>
           </svg>
-          <input type="search" placeholder="Search" className="outline-none" />
+          <input
+            type="search"
+            placeholder="Search camps..."
+            className="outline-none w-full"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </label>
+
+        {/* Sort Dropdown */}
+        <select
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+          className="select select-bordered"
+        >
+          <option value="default">Sort By: Default</option>
+          <option value="mostRegistered">Most Registered</option>
+          <option value="campFees">Camp Fees (Low to High)</option>
+          <option value="alphabetical">Alphabetical (A-Z)</option>
+        </select>
+
+        {/* Layout Toggle Button for lg screen */}
+        <button
+          onClick={() => setIsThreeColumn(!isThreeColumn)}
+          className="btn btn-outline hidden lg:block"
+        >
+          Switch to {isThreeColumn ? "2 Column" : "3 Column"}
+        </button>
       </div>
 
-      {/* Card Grid */}
+      {/* Camp Cards */}
       <div className="py-10 px-4 bg-gray-100 min-h-screen">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          className={`max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 ${
+            isThreeColumn ? "lg:grid-cols-3" : "lg:grid-cols-2"
+          } gap-6`}
+        >
           {currentCamps.map((camp) => (
             <CampCard key={camp._id} camp={camp} />
           ))}
         </div>
 
-        {/* Pagination Controls */}
+        {/* Pagination */}
         <div className="join flex justify-center mt-10 flex-wrap gap-1">
           <button
             className="join-item btn"
@@ -130,9 +181,7 @@ const AvailableCamps = () => {
           >
             «
           </button>
-
           {renderPageNumbers()}
-
           <button
             className="join-item btn"
             onClick={() => handlePageChange(currentPage + 1)}

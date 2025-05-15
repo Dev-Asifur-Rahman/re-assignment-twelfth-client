@@ -1,9 +1,42 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../../js/context";
+import { imageUpload } from "../../../js/imageupload";
+import { update_Profile } from "../../../js/firebase-operation";
+import { swalSuccess, toastError } from "../../../js/utils";
 
 const OrganizerProfile = () => {
   const { user, role } = useContext(Context);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  console.log(user);
+
+  const updateProfile = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const target = e.target;
+    const name = target.name.value;
+    const imageFile = target.image.files[0];
+    let final_image = user?.photoURL;
+    if (imageFile) {
+      const uploaded_image = await imageUpload(imageFile);
+
+      if (!uploaded_image) {
+        setLoading(false);
+        return toastError("Image Upload Failed");
+      }
+      final_image = uploaded_image;
+    }
+    update_Profile(name, final_image)
+      .then((res) => {
+        swalSuccess("Profile Updated Successfully");
+        window.location.reload()
+      })
+      .catch((error) => {
+        toastError("Update Failed!");
+      });
+    setLoading(false);
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="relative min-h-screen bg-gradient-to-bl from-violet-500 to-fuchsia-500 p-8 flex items-center justify-center">
@@ -24,20 +57,18 @@ const OrganizerProfile = () => {
 
           <div className="mt-2 text-sm sm:text-base font-medium text-gray-600">
             <p>
-              Role: <span className="text-violet-600">{role?"Unknown":"Participant"}</span>
+              Role:{" "}
+              <span className="text-violet-600">
+                {role ? "Unknown" : "Participant"}
+              </span>
             </p>
           </div>
 
           <div className="mt-4">
-            <h3 className="text-lg sm:text-xl font-medium text-violet-600">Email</h3>
+            <h3 className="text-lg sm:text-xl font-medium text-violet-600">
+              Email
+            </h3>
             <p className="text-sm sm:text-lg text-gray-700">{user?.email}</p>
-          </div>
-
-          <div className="mt-4">
-            <h3 className="text-lg sm:text-xl font-medium text-violet-600">Phone</h3>
-            <p className="text-sm sm:text-lg text-gray-700">
-              {user?.phoneNumber ? user.phoneNumber : "N/A"}
-            </p>
           </div>
 
           <button
@@ -55,19 +86,43 @@ const OrganizerProfile = () => {
           className="fixed inset-0 flex items-center justify-center z-50 bg-black/30 backdrop-blur-sm"
           onClick={() => setIsModalOpen(false)}
         >
-          <div
+          <form
+            onSubmit={updateProfile}
             className="bg-white rounded-lg shadow-xl p-6 w-11/12 max-w-md"
             onClick={(e) => e.stopPropagation()} // Prevent closing on modal click
           >
-            <h3 className="text-xl font-bold mb-4">Update Profile</h3>
-            <p className="text-gray-700 mb-4">You can add your form here later.</p>
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="mt-2 px-4 py-2 bg-violet-500 text-white rounded hover:bg-violet-600"
-            >
-              Close
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1">Name</label>
+              <input
+                type="text"
+                name="name"
+                defaultValue={user?.displayName || ""}
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-violet-500"
+                placeholder="Enter your name"
+              />
+              
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1">
+                PhotoURL
+              </label>
+              <input type="file" className="file-input w-full" name="image" />
+              {user && (
+                <label className="block text-sm font-medium mb-1">
+                  ({user?.photoURL})
+                </label>
+              )}
+            </div>
+
+            <button className="mt-2 px-4 py-2 bg-violet-500 text-white rounded w-full  bg-linear-to-bl from-violet-500 to-fuchsia-500">
+              {loading === true ? (
+                <span className="loading text-white loading-dots loading-sm"></span>
+              ) : (
+                "Update"
+              )}
             </button>
-          </div>
+          </form>
         </div>
       )}
     </div>
