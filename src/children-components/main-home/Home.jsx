@@ -7,7 +7,7 @@ import { NavLink } from "react-router";
 function Home() {
   return (
     <div>
-      <p className="">Home</p>
+      
       <CommonHeading></CommonHeading>
       <Banner></Banner>
       <HomeSwiper></HomeSwiper>

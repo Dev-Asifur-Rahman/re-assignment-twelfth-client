@@ -8,7 +8,6 @@ const OrganizerProfile = () => {
   const { user, role } = useContext(Context);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log(user);
 
   const updateProfile = async (e) => {
     e.preventDefault();

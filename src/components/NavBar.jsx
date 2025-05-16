@@ -9,6 +9,7 @@ import logo from "../assets/images/site_logo_two.svg";
 const NavBar = () => {
   const { user, role } = useContext(Context);
   const navigate = useNavigate();
+  const navigateHome = useNavigate()
   const dashboard = useNavigate();
   const [Dropdown, setDropdown] = useState(false);
 
@@ -23,9 +24,9 @@ const NavBar = () => {
   };
   return (
     <div className="flex justify-between w-full items-center p-2 min-h-16 bg-base-100 shadow-sm">
-      <div className="inline-flex items-center w-1/2 md:w-1/2 lg:w-fit">
+      <div onClick={()=>navigateHome('/')} className="inline-flex items-center w-1/2 md:w-1/2 lg:w-fit hover:cursor-pointer">
         <img src={logo} className="h-[40px]" alt="" />
-        <p className="text-xl md:text-2xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-bl from-violet-500 to-fuchsia-500  font-extrabold md:inline lg:inline">
+        <p className="text-xl  md:text-2xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-bl from-violet-500 to-fuchsia-500  font-extrabold md:inline lg:inline">
           CampAID
         </p>
       </div>
@@ -33,13 +34,10 @@ const NavBar = () => {
         <div className="flex items-center gap-x-4">
           <NavLink to={"/"}>Home</NavLink>
           <NavLink to={"/available-camps"}>Available Camps</NavLink>
-          {!role && <NavLink to={"/dashboard/analytics"}>Dashboard</NavLink>}
-          {role && <NavLink to={"/dashboard/analytics"}>Dashboard</NavLink>}
+          {user && <NavLink to={"/dashboard/analytics"}>Dashboard</NavLink>}
+          {user && role && <NavLink to={"/dashboard/manage-camps"}>Dashboard</NavLink>}
         </div>
-        {/* <ul className="menu menu-horizontal px-1">
-          <li></li>
-          <li></li>
-        </ul> */}
+
       </div>
       <div className="inline-flex justify-end  items-center w-1/2 md:w-1/2 lg:w-fit">
         {user ? (
@@ -51,7 +49,7 @@ const NavBar = () => {
             <div className="rounded-full h-[40px] w-[40px]">
               <img
                 src={user ? user.photoURL : icon}
-                className="h-full w-full rounded-full"
+                className="h-full w-full hover:cursor-pointer rounded-full"
                 alt=""
               />
             </div>

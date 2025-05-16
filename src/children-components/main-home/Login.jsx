@@ -86,7 +86,7 @@ const Login = () => {
                   <p className="link link-hover">register</p>
                 </Link>
               </div>
-              <button className="btn btn-neutral mt-4">
+              <button className="btn text-white bg-linear-to-bl from-violet-500 to-fuchsia-500 mt-4">
                 {loading ? (
                   <span className="loading loading-dots loading-sm"></span>
                 ) : (
@@ -95,7 +95,10 @@ const Login = () => {
               </button>
             </fieldset>
           </form>
-          <button onClick={googleLogin} className="btn btn-neutral mx-6 mb-6">
+          <button
+            onClick={googleLogin}
+            className="btn text-white bg-linear-to-bl from-violet-500 to-fuchsia-500 mx-6 mb-6"
+          >
             {googleLoading ? (
               <span className="loading loading-dots loading-sm"></span>
             ) : (

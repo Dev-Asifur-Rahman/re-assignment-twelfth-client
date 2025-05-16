@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import { RiEye2Line, RiEyeCloseLine } from "react-icons/ri";
 import { Link, useLocation, useNavigate } from "react-router";
-import { createUser, googleSignIn, setProfile } from "../../js/firebase-operation";
+import {
+  createUser,
+  googleSignIn,
+  setProfile,
+} from "../../js/firebase-operation";
 import { toastError, toastSuccess } from "../../js/utils";
 import { imageUpload } from "../../js/imageupload";
 
 const Register = () => {
   const [toggle, setToggle] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation()
-  const redirectPath = location.state?.from.pathname || "/"
+  const location = useLocation();
+  const redirectPath = location.state?.from.pathname || "/";
   const [loading, setLoading] = useState(false);
-  const [googleLoading,setGoogleLoading] = useState(false)
+  const [googleLoading, setGoogleLoading] = useState(false);
 
   async function register(e) {
     e.preventDefault();
@@ -118,7 +122,7 @@ const Register = () => {
                   <p className="link link-hover">login</p>{" "}
                 </Link>
               </div>
-              <button className="btn btn-neutral mt-4">
+              <button className="btn text-white bg-linear-to-bl from-violet-500 to-fuchsia-500 mt-4">
                 {loading ? (
                   <span className="loading text-white loading-dots loading-sm"></span>
                 ) : (
@@ -127,7 +131,10 @@ const Register = () => {
               </button>
             </fieldset>
           </form>
-          <button onClick={googleLogin} className="btn btn-neutral mx-6 mb-6">
+          <button
+            onClick={googleLogin}
+            className="btn text-white bg-linear-to-bl from-violet-500 to-fuchsia-500 mx-6 mb-6"
+          >
             {googleLoading ? (
               <span className="loading loading-dots loading-sm"></span>
             ) : (
