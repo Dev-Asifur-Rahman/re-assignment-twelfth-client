@@ -5,17 +5,18 @@ import LottieSpinner from "../../../components/LottieSpinner";
 import { ApiInstance } from "../../../js/api-instance";
 import { swalConfirm, swalError, swalSuccess } from "../../../js/utils";
 import { useNavigate } from "react-router";
+import CommonHeading from "../../../components/CommonHeading";
 
 const ManageCamps = () => {
   const { all_camps, isPending, refetch } = useAllCamp();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const updateCamp = (camp) => {
-    swalConfirm("Update This Camp ?").then(result=>{
-      if(result.isConfirmed){
-        navigate("/dashboard/update-camp",{state:camp})
+    swalConfirm("Update This Camp ?").then((result) => {
+      if (result.isConfirmed) {
+        navigate("/dashboard/update-camp", { state: camp });
       }
-    })
+    });
   };
   const deleteCamp = (id) => {
     swalConfirm("Are You Sure?").then((result) => {
@@ -38,7 +39,12 @@ const ManageCamps = () => {
     return <LottieSpinner></LottieSpinner>;
   } else {
     return (
-      <div>
+      <div className="w-full">
+        <CommonHeading
+          heading="Manage Your Camps"
+          description="Edit, update, or remove your existing medical camps."
+        />
+
         <div className="overflow-x-auto">
           <table className="table table-zebra">
             {/* head */}

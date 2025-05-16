@@ -7,9 +7,12 @@ import { NavLink } from "react-router";
 function Home() {
   return (
     <div>
-      
-      <CommonHeading></CommonHeading>
       <Banner></Banner>
+      <CommonHeading
+        heading="Most Popular Medical Camps"
+        description="Explore top-attended camps that made the biggest impact on communities."
+      />
+
       <HomeSwiper></HomeSwiper>
       <div className="flex justify-center items-center w-full my-4">
         <NavLink to={"/available-camps"}>

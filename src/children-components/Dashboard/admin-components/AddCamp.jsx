@@ -4,10 +4,11 @@ import CallyCalender from "../../../components/CallyCalender";
 import { swalSuccess, toastError, toastSuccess } from "../../../js/utils";
 import { imageUpload } from "../../../js/imageupload";
 import { ApiInstance } from "../../../js/api-instance";
-import useAllCamp from './../../../hook/useAllCamp';
+import useAllCamp from "./../../../hook/useAllCamp";
+import CommonHeading from "../../../components/CommonHeading";
 
 const AddCamp = () => {
-  const {refetch} = useAllCamp()
+  const { refetch } = useAllCamp();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [calenderDate, setCalenderDate] = useState("Pick a Date");
@@ -32,7 +33,7 @@ const AddCamp = () => {
         setLoading(false);
         return toastError("Image upload failed.");
       } else {
-        const appointment_date = calenderDate
+        const appointment_date = calenderDate;
         const camp_data = {
           camp_name,
           image,
@@ -46,9 +47,9 @@ const AddCamp = () => {
         ApiInstance.post("/upload-camp", camp_data).then((res) => {
           if (res.data.acknowledged) {
             setLoading(false);
-            target.reset()
-            swalSuccess("New Camp Added")
-            refetch()
+            target.reset();
+            swalSuccess("New Camp Added");
+            refetch();
           } else {
             setLoading(false);
             toastError("Something Went Wrong.Try Again!");
@@ -60,7 +61,12 @@ const AddCamp = () => {
 
   return (
     <div className="w-full">
-      <form onSubmit={add_camp} className="border px-6">
+      <CommonHeading
+        heading="Add A New Camp"
+        description="Create and publish a new medical camp for participants to join."
+      />
+
+      <form onSubmit={add_camp} className=" px-6">
         <fieldset
           id="camp-div"
           className="fieldset w-full grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-2 place-items-center"

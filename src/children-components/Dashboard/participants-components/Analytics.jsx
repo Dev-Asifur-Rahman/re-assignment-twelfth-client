@@ -16,6 +16,7 @@ import {
   Scatter,
   ResponsiveContainer,
 } from "recharts";
+import CommonHeading from "../../../components/CommonHeading";
 
 const Analytics = () => {
   const { user } = useContext(Context);
@@ -30,23 +31,29 @@ const Analytics = () => {
       return <NoDataUI></NoDataUI>;
     } else {
       return (
-        <div className="w-full h-[250px] md:h-[300px] lg:h-[500px] ">
-          <ResponsiveContainer width="100%" height="100%">
-            <ComposedChart data={registered_camp}>
-              <CartesianGrid stroke="#f5f5f5" />
-              <XAxis
-                dataKey="camp_name"
-                angle={-45}
-                textAnchor="end"
-                interval={0}
-              />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="camp_fee" barSize="100" fill="#413ea0" />
-            </ComposedChart>
-          </ResponsiveContainer>
-        </div>
+        <section className="w-full">
+          <CommonHeading
+            heading="Analytics Overview"
+            description="Gain insights into camp participation and overall impact."
+          />
+          <div className="w-full h-[250px] md:h-[300px] lg:h-[500px] ">
+            <ResponsiveContainer width="100%" height="100%">
+              <ComposedChart data={registered_camp}>
+                <CartesianGrid stroke="#f5f5f5" />
+                <XAxis
+                  dataKey="camp_name"
+                  angle={-45}
+                  textAnchor="end"
+                  interval={0}
+                />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="camp_fee" barSize="100" fill="#413ea0" />
+              </ComposedChart>
+            </ResponsiveContainer>
+          </div>
+        </section>
       );
     }
   }

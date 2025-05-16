@@ -34,7 +34,7 @@ const NavBar = () => {
         <div className="flex items-center gap-x-4">
           <NavLink to={"/"}>Home</NavLink>
           <NavLink to={"/available-camps"}>Available Camps</NavLink>
-          {user && <NavLink to={"/dashboard/analytics"}>Dashboard</NavLink>}
+          {user && !role && <NavLink to={"/dashboard/analytics"}>Dashboard</NavLink>}
           {user && role && <NavLink to={"/dashboard/manage-camps"}>Dashboard</NavLink>}
         </div>
 

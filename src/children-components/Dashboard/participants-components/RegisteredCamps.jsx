@@ -5,13 +5,14 @@ import useUserRegisteredCamps from "../../../hook/useUserRegisteredCamps";
 import { AiOutlineDelete } from "react-icons/ai";
 import { ApiInstance } from "../../../js/api-instance";
 import { useNavigate } from "react-router";
+import CommonHeading from "../../../components/CommonHeading";
 
 const RegisteredCamps = () => {
   const { user } = useContext(Context);
   const navigate = useNavigate();
 
   const payment_route = (camp) => {
-    navigate("/dashboard/registration-payment",{state:{camp}});
+    navigate("/dashboard/registration-payment", { state: { camp } });
   };
 
   function deleteRegistration(id, campId) {
@@ -31,6 +32,11 @@ const RegisteredCamps = () => {
   } else {
     return (
       <div>
+        <CommonHeading
+          heading="Registered Camps"
+          description="Keep track of all the medical camps you have signed up for."
+        />
+
         <div className="overflow-x-auto">
           <table className="table table-zebra">
             {/* head */}
@@ -61,7 +67,7 @@ const RegisteredCamps = () => {
                         ) : (
                           <button
                             className="btn btn-sm text-white bg-linear-to-bl from-violet-500 to-fuchsia-500"
-                            onClick={()=>payment_route(user)}
+                            onClick={() => payment_route(user)}
                           >
                             Pay
                           </button>
@@ -69,10 +75,7 @@ const RegisteredCamps = () => {
                       </p>
                     </td>
                     <td className="">
-                      <p
-                        className="w-full text-center"
-                        
-                      >
+                      <p className="w-full text-center">
                         {user?.confirmation_status === true
                           ? "Confirmed"
                           : "Pending"}

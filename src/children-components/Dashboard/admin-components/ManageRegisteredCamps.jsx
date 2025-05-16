@@ -5,6 +5,7 @@ import { swalConfirm, swalError, swalSuccess } from "../../../js/utils";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import { ApiInstance } from "../../../js/api-instance";
+import CommonHeading from "../../../components/CommonHeading";
 
 const ManageRegisteredCamps = () => {
   const { registered_users, isPending, refetch } = useRegisteredUser();
@@ -46,7 +47,12 @@ const ManageRegisteredCamps = () => {
     return <LottieSpinner></LottieSpinner>;
   } else {
     return (
-      <div>
+      <div className="w-full">
+        <CommonHeading
+          heading="Manage Registered Camps"
+          description="Oversee participant lists and registrations for your camps."
+        />
+
         <div className="overflow-x-auto">
           <table className="table table-zebra">
             {/* head */}

@@ -1,6 +1,7 @@
 import React from "react";
 import useUserPaymentHistory from "../../../hook/useUserPaymentHistory";
 import NoDataUI from "../../../components/NoDataUI";
+import CommonHeading from "../../../components/CommonHeading";
 
 const PaymentHistory = () => {
   const { data, isPending } = useUserPaymentHistory();
@@ -9,6 +10,11 @@ const PaymentHistory = () => {
   } else {
     return (
       <div>
+        <CommonHeading
+          heading="Payment History"
+          description="Review your past payments and transaction details."
+        />
+
         <div className="overflow-x-auto">
           <table className="table table-zebra">
             {/* head */}
@@ -26,7 +32,7 @@ const PaymentHistory = () => {
               {data?.map((payment, index) => {
                 return (
                   <tr key={payment?._id}>
-                    <th>{index+1}</th>
+                    <th>{index + 1}</th>
                     <td>{payment?.camp_name}</td>
                     <td>{payment?.fee}</td>
                     <td>{payment?.transactionId}</td>

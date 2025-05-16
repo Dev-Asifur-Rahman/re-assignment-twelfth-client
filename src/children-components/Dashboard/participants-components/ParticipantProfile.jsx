@@ -3,6 +3,7 @@ import { Context } from "../../../js/context";
 import { imageUpload } from "../../../js/imageupload";
 import { update_Profile } from "../../../js/firebase-operation";
 import { swalSuccess, toastError } from "../../../js/utils";
+import CommonHeading from "../../../components/CommonHeading";
 
 const OrganizerProfile = () => {
   const { user, role } = useContext(Context);
@@ -28,7 +29,7 @@ const OrganizerProfile = () => {
     update_Profile(name, final_image)
       .then((res) => {
         swalSuccess("Profile Updated Successfully");
-        window.location.reload()
+        window.location.reload();
       })
       .catch((error) => {
         toastError("Update Failed!");
@@ -38,93 +39,99 @@ const OrganizerProfile = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-bl from-violet-500 to-fuchsia-500 p-8 flex items-center justify-center">
-      {/* Profile Section */}
-      <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg p-6 max-w-lg w-full border border-white/20 z-10">
-        <div className="flex justify-center mb-6">
-          <img
-            src={user?.photoURL}
-            alt="Profile"
-            className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-gradient-to-r from-violet-500 to-fuchsia-500"
-          />
-        </div>
+    <section className="w-full">
+      <CommonHeading
+        heading="Participant Profile"
+        description="View and manage your personal details and camp activities."
+      />
 
-        <div className="text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
-            {user?.displayName}
-          </h1>
-
-          <div className="mt-2 text-sm sm:text-base font-medium text-gray-600">
-            <p>
-              Role:{" "}
-              <span className="text-violet-600">
-                {role ? "Unknown" : "Participant"}
-              </span>
-            </p>
+      <div className="relative min-h-screen p-8 flex items-center justify-center">
+        {/* Profile Section */}
+        <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-2xl p-6 max-w-lg w-full border border-white/20 z-10">
+          <div className="flex justify-center mb-6">
+            <img
+              src={user?.photoURL}
+              alt="Profile"
+              className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-gradient-to-r from-violet-500 to-fuchsia-500"
+            />
           </div>
 
-          <div className="mt-4">
-            <h3 className="text-lg sm:text-xl font-medium text-violet-600">
-              Email
-            </h3>
-            <p className="text-sm sm:text-lg text-gray-700">{user?.email}</p>
-          </div>
+          <div className="text-center">
+            <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
+              {user?.displayName}
+            </h1>
 
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="mt-6 w-full py-2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-lg hover:from-violet-600 hover:to-fuchsia-600 transition"
-          >
-            Update Profile
-          </button>
-        </div>
-      </div>
-
-      {/* Modal Overlay + Content */}
-      {isModalOpen && (
-        <div
-          className="fixed inset-0 flex items-center justify-center z-50 bg-black/30 backdrop-blur-sm"
-          onClick={() => setIsModalOpen(false)}
-        >
-          <form
-            onSubmit={updateProfile}
-            className="bg-white rounded-lg shadow-xl p-6 w-11/12 max-w-md"
-            onClick={(e) => e.stopPropagation()} // Prevent closing on modal click
-          >
-            <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">Name</label>
-              <input
-                type="text"
-                name="name"
-                defaultValue={user?.displayName || ""}
-                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-violet-500"
-                placeholder="Enter your name"
-              />
-              
+            <div className="mt-2 text-sm sm:text-base font-medium text-gray-600">
+              <p>
+                Role:{" "}
+                <span className="text-violet-600">
+                  {role ? "Unknown" : "Participant"}
+                </span>
+              </p>
             </div>
 
-            <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">
-                PhotoURL
-              </label>
-              <input type="file" className="file-input w-full" name="image" />
-              {user && (
-                <label className="block text-sm font-medium mb-1">
-                  ({user?.photoURL})
-                </label>
-              )}
+            <div className="mt-4">
+              <h3 className="text-lg sm:text-xl font-medium text-violet-600">
+                Email
+              </h3>
+              <p className="text-sm sm:text-lg text-gray-700">{user?.email}</p>
             </div>
 
-            <button className="mt-2 px-4 py-2 bg-violet-500 text-white rounded w-full  bg-linear-to-bl from-violet-500 to-fuchsia-500">
-              {loading === true ? (
-                <span className="loading text-white loading-dots loading-sm"></span>
-              ) : (
-                "Update"
-              )}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="mt-6 w-full py-2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-lg hover:from-violet-600 hover:to-fuchsia-600 transition"
+            >
+              Update Profile
             </button>
-          </form>
+          </div>
         </div>
-      )}
-    </div>
+
+        {/* Modal Overlay + Content */}
+        {isModalOpen && (
+          <div
+            className="fixed inset-0 flex items-center justify-center z-50 bg-black/30 backdrop-blur-sm"
+            onClick={() => setIsModalOpen(false)}
+          >
+            <form
+              onSubmit={updateProfile}
+              className="bg-white rounded-lg shadow-xl p-6 w-11/12 max-w-md"
+              onClick={(e) => e.stopPropagation()} // Prevent closing on modal click
+            >
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-1">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  defaultValue={user?.displayName || ""}
+                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-violet-500"
+                  placeholder="Enter your name"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-1">
+                  PhotoURL
+                </label>
+                <input type="file" className="file-input w-full" name="image" />
+                {user && (
+                  <label className="block text-sm font-medium mb-1">
+                    ({user?.photoURL})
+                  </label>
+                )}
+              </div>
+
+              <button className="mt-2 px-4 py-2 bg-violet-500 text-white rounded w-full  bg-linear-to-bl from-violet-500 to-fuchsia-500">
+                {loading === true ? (
+                  <span className="loading text-white loading-dots loading-sm"></span>
+                ) : (
+                  "Update"
+                )}
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
+    </section>
   );
 };
 
