@@ -67,7 +67,7 @@ const UpdateCamp = () => {
 
   return (
     <div className="w-full">
-      <form onSubmit={update_camp} className="border px-6">
+      <form onSubmit={update_camp} className=" px-6">
         <fieldset
           id="camp-div"
           className="fieldset w-full grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-2 place-items-center"
@@ -165,7 +165,7 @@ const UpdateCamp = () => {
               placeholder="Description"
             />
           </div>
-          <button className="my-5 btn btn-neutral lg:col-span-2 md:col-span-2 col-span-1">
+          <button className="my-5 btn text-white bg-linear-to-bl from-violet-500 to-fuchsia-500 lg:col-span-2 md:col-span-2 col-span-1">
             {loading ? (
               <span className="loading text-white loading-dots loading-sm"></span>
             ) : (

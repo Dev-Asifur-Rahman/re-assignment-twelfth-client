@@ -159,7 +159,7 @@ const AddCamp = () => {
               placeholder="Description"
             />
           </div>
-          <button className="my-5 btn btn-neutral lg:col-span-2 md:col-span-2 col-span-1">
+          <button className="my-5 btn text-white bg-linear-to-bl from-violet-500 to-fuchsia-500 lg:col-span-2 md:col-span-2 col-span-1">
             {loading ? (
               <span className="loading text-white loading-dots loading-sm"></span>
             ) : (
