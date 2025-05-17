@@ -60,6 +60,7 @@ const RegisteredCamps = () => {
     const feedback_object = {
       campId,
       email: user?.email,
+      photoURL:user?.photoURL,
       feedback,
       rating,
     };
