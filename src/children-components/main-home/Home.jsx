@@ -3,8 +3,11 @@ import HomeSwiper from "../../components/HomeSwiper";
 import Banner from "../../components/Banner";
 import CommonHeading from "../../components/CommonHeading";
 import { NavLink } from "react-router";
+import useTopThreeCamps from "../../hook/useTopThreeCamps";
+import TopFavouriteCamp from "../../components/TopFavouriteCamp";
 
 function Home() {
+  const { data } = useTopThreeCamps();
   return (
     <div>
       <Banner></Banner>
@@ -21,6 +24,11 @@ function Home() {
           </button>
         </NavLink>
       </div>
+      <CommonHeading
+        heading="Camps That Made a Mark"
+        description="Experience the top-rated camps that participants loved the most."
+      />
+      <TopFavouriteCamp></TopFavouriteCamp>
     </div>
   );
 }

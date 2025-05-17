@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../../../js/context";
 import LottieSpinner from "../../../components/LottieSpinner";
 import useUserRegisteredCamps from "../../../hook/useUserRegisteredCamps";
@@ -6,13 +6,56 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { ApiInstance } from "../../../js/api-instance";
 import { useNavigate } from "react-router";
 import CommonHeading from "../../../components/CommonHeading";
+import { swalError, swalSuccess, toastError } from "../../../js/utils";
+import useTopThreeCamps from "../../../hook/useTopThreeCamps";
 
 const RegisteredCamps = () => {
-  const { user } = useContext(Context);
+  const [showModal, setShowModal] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [feedback, setFeedback] = useState("");
+  const [campId, setCampId] = useState();
+  const [loading,setLoading] = useState()
+  const { user, role } = useContext(Context);
   const navigate = useNavigate();
+  const {refetch:refetch_feedback} = useTopThreeCamps()
 
   const payment_route = (camp) => {
     navigate("/dashboard/registration-payment", { state: { camp } });
+  };
+
+  const sendFeedback = () => {
+    setLoading(true)
+    if (!feedback) {
+      setLoading(false)
+      return toastError("Feedback Can't be blank");
+    }
+    if (rating === 0) {
+      setLoading(false)
+      return toastError("Submit Rating First");
+    }
+    const feedback_object = {
+      campId,
+      email:user?.email,
+      feedback,
+      rating
+    }
+    ApiInstance.post("/feedback",feedback_object).then(res=>{
+      if(res.data.acknowledged){
+        setLoading(false)
+        swalSuccess('Thanks for your Feedback')
+        setFeedback("")
+        setRating(0)
+        setShowModal(false)
+        refetch_feedback()
+      }
+      else{
+        setLoading(false)
+        swalError('Feedback Error','You already gave a Feedback')
+      }
+    }).catch(error=>{
+      setLoading(false)
+      swalError('Feedback Error! Try Again')
+    })
   };
 
   function deleteRegistration(id, campId) {
@@ -96,8 +139,12 @@ const RegisteredCamps = () => {
                     <td className="">
                       {user?.payment_status === true ? (
                         <button
-                          disabled={user && user.confirmation_status === false}
-                          className="btn btn-sm text-white bg-linear-to-bl from-violet-500 to-fuchsia-500"
+                          onClick={() => {
+                            setShowModal(true);
+                            setCampId(user?.campId);
+                          }}
+                          disabled={!role && user.confirmation_status === false}
+                          className="btn btn-sm text-white bg-linear-to-bl from-violet-500 to-fuchsia-500 disabled:bg-gray-300 disabled:bg-none disabled:text-black"
                         >
                           Feedback
                         </button>
@@ -111,6 +158,55 @@ const RegisteredCamps = () => {
             </tbody>
           </table>
         </div>
+        {showModal && (
+          <div className="fixed inset-0 flex items-center justify-center z-50  backdrop-blur-sm bg-black/20">
+            <div className="bg-white p-6 rounded-xl w-[90%] max-w-md shadow-lg border border-gray-200">
+              <h2 className="text-xl font-bold mb-4">Give Your Feedback</h2>
+
+              <textarea
+                required
+                className="textarea textarea-bordered w-full mb-4"
+                placeholder="Write your feedback..."
+                value={feedback}
+                onChange={(e) => setFeedback(e.target.value)}
+              ></textarea>
+
+              {/* Custom Star Rating */}
+              <div className="flex gap-1 mb-4">
+                {[1, 2, 3, 4, 5].map((value) => (
+                  <svg
+                    key={value}
+                    onClick={() => setRating(value)}
+                    className={`w-8 h-8 cursor-pointer ${
+                      value <= rating ? "text-orange-400" : "text-gray-300"
+                    }`}
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.782 1.4 8.174L12 18.896l-7.334 3.87 1.4-8.174L.132 9.21l8.2-1.192z" />
+                  </svg>
+                ))}
+              </div>
+
+              <div className="flex justify-end gap-2">
+                <button
+                  onClick={sendFeedback}
+                  className="btn bg-linear-to-bl from-violet-500 to-fuchsia-500 text-white"
+                >
+                  {loading?<span className="loading text-white loading-dots loading-sm"></span>:"Submit"}
+                </button>
+                <button
+                  onClick={() => {
+                    setShowModal(false);
+                  }}
+                  className="btn btn-outline"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

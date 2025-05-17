@@ -44,9 +44,9 @@ const OrganizerProfile = () => {
         heading="Organizer Profile"
         description="View and update your information as a camp organizer."
       />
-      <div className="relative min-h-screen bg-gradient-to-bl from-violet-500 to-fuchsia-500 p-8 flex items-center justify-center">
+      <div className="relative min-h-screen p-8 flex items-center justify-center">
         {/* Profile Section */}
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg p-6 max-w-lg w-full border border-white/20 z-10">
+        <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-2xl p-6 max-w-lg w-full border border-white/20 z-10">
           <div className="flex justify-center mb-6">
             <img
               src={user?.photoURL}
