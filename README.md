@@ -1,12 +1,60 @@
-# React + Vite
+# CampAID
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site**: https://camp-aid.netlify.app/
 
-Currently, two official plugins are available:
+CampAID is an online camp registration platform that allows users to explore and register for various types of camps including health, educational, and awareness events. Built with modern web technologies, it ensures a seamless and user-friendly experience for both organizers and participants.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 👤 Organizer
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Name**: Asifur Rahman
+
+---
+
+## 🔐 Demo Login
+
+- **Username**: `asifurrahman.ac@gmail.com`  
+- **Password**: `1234Asif`
+
+---
+
+## 🚀 Key Features
+
+- 🔍 Browse and search for upcoming camps across categories
+- 📝 Register for camps using a secure and streamlined process
+- 👤 User authentication with Firebase (email/password-based)
+- 🧾 Role-based access for Admin, Organizer, and Participant
+- 🗂 Admin dashboard to manage users, camps, and payments
+- 💳 Secure payment integration via Stripe
+- 📊 Interactive dashboards using Recharts for data visualization
+- 🔄 Real-time data fetching with React Query
+- 💬 Toast and alert notifications using `react-hot-toast` and `sweetalert2`
+- 📱 Fully responsive design using Tailwind CSS and DaisyUI
+- 🎥 Animations and user engagement with Lottie and Swiper sliders
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- **React 19**
+- **Vite** for blazing fast dev/build
+- **Tailwind CSS 4** & **DaisyUI** for modern UI
+- **React Router 7** for client-side routing
+- **Axios** for API communication
+- **React Query** for efficient data fetching
+- **Recharts** for chart visualizations
+- **Swiper** for slideshows
+- **Lottie React** for animations
+- **Lucide Icons**, **React Icons**, and **React Tooltip**
+
+### Authentication & Payments
+
+- **Firebase** for user auth and hosting
+- **Stripe** for payment processing
+
+
+
+
