@@ -8,8 +8,8 @@ import { ApiInstance } from "../../js/api-instance";
 import useAllCamp from "../../hook/useAllCamp";
 
 const Details = () => {
-  const {refetch} = useAllCamp()
-  const { user } = useContext(Context);
+  const { refetch } = useAllCamp();
+  const { user, role } = useContext(Context);
   const { campId } = useParams();
   const { camp, isLoading, campRefetch } = useCampDetails(campId);
   const {
@@ -57,7 +57,7 @@ const Details = () => {
         age,
         number,
         payment_status: false,
-        confirmation_status :false
+        confirmation_status: false,
       };
 
       ApiInstance.post("/register-campaign", registration_object)
@@ -67,11 +67,11 @@ const Details = () => {
           setTimeout(() => {
             if (res.data.acknowledged) {
               swalSuccess("Registered Successfully");
-              refetch()
-              campRefetch()
-              target.reset()
+              refetch();
+              campRefetch();
+              target.reset();
             } else {
-              swalError("Already Registered","You Have Registered Once");
+              swalError("Already Registered", "You Have Registered Once");
             }
           }, 300);
         })
@@ -117,18 +117,17 @@ const Details = () => {
                   <span className="font-semibold">Date </span>
                   {appointment_date}
                 </div>
+                <div className="flex items-center flex-wrap">
+                  <p className="font-semibold">Healthcare Professional:</p>
+                  <p>{professional_name}</p>
+                </div>
                 <div>
                   <span className="font-semibold">Location:</span> {location}
                 </div>
-                <div>
-                  <span className="font-semibold">
-                    Healthcare Professional:
-                  </span>
-                  {professional_name}
-                </div>
+
                 <div>
                   <p className="font-semibold">
-                    Participants:{" "}
+                    Participants:
                     <span className="font-normal">{participants}</span>
                   </p>
                 </div>
@@ -136,9 +135,12 @@ const Details = () => {
 
               <button
                 className="mt-6 w-full md:w-auto px-6 py-2 bg-gradient-to-bl from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 text-white font-medium rounded-xl transition-all duration-200 shadow-md"
-                onClick={() =>
-                  document.getElementById("my_modal_5").showModal()
-                }
+                onClick={() => {
+                  if (role) {
+                    return toastError("Admin can't register");
+                  }
+                  document.getElementById("my_modal_5").showModal();
+                }}
               >
                 Join Camp
               </button>

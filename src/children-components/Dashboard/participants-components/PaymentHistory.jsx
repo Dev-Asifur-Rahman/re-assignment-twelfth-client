@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import useUserPaymentHistory from "../../../hook/useUserPaymentHistory";
 import NoDataUI from "../../../components/NoDataUI";
 import CommonHeading from "../../../components/CommonHeading";
+import LottieSpinner from "../../../components/LottieSpinner";
 
 const PaymentHistory = () => {
   const { data, isPending } = useUserPaymentHistory();
@@ -53,7 +54,7 @@ const PaymentHistory = () => {
       />
 
       {isPending ? (
-        <div className="text-center py-10">Loading payments...</div>
+        <LottieSpinner></LottieSpinner>
       ) : (
         <>
           <div className="overflow-x-auto">
@@ -65,20 +66,35 @@ const PaymentHistory = () => {
                   <th>Fee</th>
                   <th>Transaction No</th>
                   <th>Date</th>
-                  <th>Payment Status</th>
+                  <th className=" text-center">Payment Status</th>
                 </tr>
               </thead>
               <tbody>
-                {currentPayments?.map((payment, index) => (
-                  <tr key={payment?._id}>
-                    <th>{indexOfFirst + index + 1}</th>
-                    <td>{payment?.camp_name}</td>
-                    <td>{payment?.fee}</td>
-                    <td>{payment?.transactionId}</td>
-                    <td>{payment?.date}</td>
-                    <td>{payment?.payment_status && "Paid"}</td>
-                  </tr>
-                ))}
+                {currentPayments?.map((payment, index) => {
+                  const bdtDate = new Date(payment?.date).toLocaleString(
+                    "en-BD",
+                    {
+                      timeZone: "Asia/Dhaka",
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: true,
+                    }
+                  );
+
+                  return (
+                    <tr key={payment?._id}>
+                      <th>{indexOfFirst + index + 1}</th>
+                      <td>{payment?.camp_name}</td>
+                      <td>{payment?.fee}</td>
+                      <td>{payment?.transactionId}</td>
+                      <td>{bdtDate}</td>
+                      <td className="text-center">{payment?.payment_status && "Paid"}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

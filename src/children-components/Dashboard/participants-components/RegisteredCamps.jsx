@@ -242,7 +242,11 @@ const RegisteredCamps = () => {
                 )}
               </button>
               <button
-                onClick={() => setShowModal(false)}
+                onClick={() => {
+                  setFeedback("")
+                  setRating(0)
+                  setShowModal(false)
+                }}
                 className="btn btn-outline"
               >
                 Cancel
