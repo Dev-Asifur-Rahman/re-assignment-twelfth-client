@@ -13,7 +13,7 @@
 }
 
 #nav-text a.active {
-  text-decoration: underline;
+  color: #d946ef;
 }
 
 #dropdown-navbar li {
@@ -62,6 +62,16 @@
   cursor: pointer;
 }
 
+#dashboard-menu {
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #d946ef;
+  padding: 4px;
+}
+
+#dashboard-menu li {
+  padding: 4px 0 4px 8px;
+}
 
 /* bg-linear-to-bl from-violet-500 to-fuchsia-500 */
 

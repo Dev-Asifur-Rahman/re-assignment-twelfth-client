@@ -1,14 +1,53 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import InterceptorProvider from "../components/InterceptorProvider";
 import { Context } from "../js/context";
 import LottieSpinner from "../components/LottieSpinner";
 import { NavLink, Outlet, useLocation } from "react-router";
 import { CiMenuBurger } from "react-icons/ci";
 import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
 
 const Dashboard = () => {
   const { role, loading } = useContext(Context);
+  const [open, setOpen] = useState(false);
+
+  const navigation_route_for_admin = [
+    {
+      href: "/dashboard/manage-camps",
+      route: "Manage Camps",
+    },
+    {
+      href: "/dashboard/admin-profile",
+      route: "Admin Profile",
+    },
+    {
+      href: "/dashboard/add-camp",
+      route: "Add a Camp",
+    },
+    {
+      href: "/dashboard/registered-camps",
+      route: "Registered Camps",
+    },
+  ];
+
+  const navigation_route_for_participants = [
+    {
+      href: "/dashboard/analytics",
+      route: "Analytics",
+    },
+    {
+      href: "/dashboard/participant-profile",
+      route: "Profile",
+    },
+    {
+      href: "/dashboard/history",
+      route: "Payment History",
+    },
+    {
+      href: "/dashboard/user-registered-camps",
+      route: "Registerd Camps",
+    },
+  ];
+
   return loading ? (
     <>
       <LottieSpinner></LottieSpinner>
@@ -129,70 +168,37 @@ const Dashboard = () => {
         </section>
         {/* for small device  */}
         <section className="w-full lg:hidden md:hidden inline">
-          <div>
-            {role ? (
-              <div className="dropdown">
-                <div tabIndex={0} role="button" className="btn m-1">
-                  <CiMenuBurger />
-                </div>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
-                >
-                  <li>
-                    <NavLink to={"/dashboard/manage-camps"}>
-                      Manage Camps
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/dashboard/admin-profile"}>
-                      Admin Profile
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/dashboard/add-camp"}>Add a Camp</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/dashboard/registered-camps"}>
-                      Registered Camps
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
-            ) : (
-              <div className="dropdown">
-                <div tabIndex={0} role="button" className="btn m-1">
-                  <CiMenuBurger></CiMenuBurger>
-                </div>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
-                >
-                  <li>
-                    <NavLink to={"/dashboard/analytics"}>Analytics</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/dashboard/participant-profile"}>
-                      Profile
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/dashboard/history"}>Payment History</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/dashboard/user-registered-camps"}>
-                      Registerd Camps
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
+          <section className="w-full relative flex justify-center my-2">
+            <button
+              className="btn w-[150px] mx-auto text-white bg-linear-to-bl from-violet-500 to-fuchsia-500"
+              onClick={() => setOpen(!open)}
+            >
+              Menu
+            </button>
+            {open && (
+              <ul
+                id="dashboard-menu"
+                className="absolute top-[110%] border w-[200px]"
+              >
+                {role
+                  ? navigation_route_for_admin.map((item, index) => (
+                      <li onClick={() => setOpen(!open)} key={index}>
+                        <NavLink to={item.href}>{item.route}</NavLink>
+                      </li>
+                    ))
+                  : navigation_route_for_participants.map((item, index) => (
+                      <li onClick={() => setOpen(!open)} key={index}>
+                        <NavLink to={item.href}>{item.route}</NavLink>
+                      </li>
+                    ))}
+              </ul>
             )}
-          </div>
+          </section>
           <div>
-          <Outlet></Outlet>
-        </div>
+            <Outlet></Outlet>
+          </div>
         </section>
-        
+
         {/* you have to use interceptors in every parent route  */}
         <InterceptorProvider></InterceptorProvider>
       </div>
