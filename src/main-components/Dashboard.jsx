@@ -3,7 +3,7 @@ import InterceptorProvider from "../components/InterceptorProvider";
 import { Context } from "../js/context";
 import LottieSpinner from "../components/LottieSpinner";
 import { NavLink, Outlet, useLocation } from "react-router";
-import { CiMenuBurger } from "react-icons/ci";
+
 import NavBar from "../components/NavBar";
 
 const Dashboard = () => {
@@ -59,7 +59,7 @@ const Dashboard = () => {
         {/* for large device  */}
         <section className="w-full lg:flex hidden">
           {role ? (
-            <div className="dashboard-navigation  w-1/6 hidden md:hidden lg:block">
+            <div className="dashboard-navigation border-r-2 h-[calc(100vh-64px)]  w-1/6 hidden md:hidden lg:block">
               <NavLink to={"/dashboard/manage-camps"}>Manage Camps</NavLink>
               <NavLink to={"/dashboard/admin-profile"}>Admin Profile</NavLink>
               <NavLink to={"/dashboard/add-camp"}>Add A Camp</NavLink>
@@ -68,7 +68,7 @@ const Dashboard = () => {
               </NavLink>
             </div>
           ) : (
-            <div className="dashboard-navigation hidden md:hidden lg:block  w-1/6 ">
+            <div className="dashboard-navigation hidden border-r-2 h-[calc(100vh-64px)] md:hidden lg:block  w-1/6 ">
               <NavLink to={"/dashboard/analytics"}>Analytics</NavLink>
               <NavLink to={"/dashboard/participant-profile"}>Profile</NavLink>
               <NavLink to={"/dashboard/history"}>Payment History</NavLink>
@@ -77,7 +77,7 @@ const Dashboard = () => {
               </NavLink>
             </div>
           )}
-          <div className="w-5/6 ">
+          <div className="w-5/6 h-[calc(100vh-64px)] overflow-y-scroll">
             <Outlet></Outlet>
           </div>
         </section>
