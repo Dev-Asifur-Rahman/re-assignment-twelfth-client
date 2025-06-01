@@ -10,7 +10,7 @@ const PaymentHistory = () => {
   const paymentsPerPage = 6;
 
   useEffect(() => {
-    setCurrentPage(1); // reset on new data
+    setCurrentPage(1);
   }, [data]);
 
   if (!isPending && data?.length === 0) {

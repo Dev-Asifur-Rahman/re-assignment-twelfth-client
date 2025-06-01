@@ -4,7 +4,7 @@ import { ApiInstance } from '../js/api-instance';
 
 const useAllFeedback = () => {
     const {data=[],isPending,refetch} = useQuery({
-        queryFn:['all-feedback'],
+        queryKey:['all-feedback'],
         queryFn: async()=>{
             const response = await ApiInstance.get('/feedbacks')
             return response.data

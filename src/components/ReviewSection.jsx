@@ -13,13 +13,13 @@ const FeedbackSection = () => {
   const visibleFeedback = data?.slice(0, visibleCount) || [];
 
   return (
-    <div className="p-6 sm:p-10 bg-gradient-to-bl from-violet-500 to-fuchsia-500 min-h-screen">
-      <h2 className="text-4xl font-bold text-white mb-10 text-center">
+    <div className="p-6 sm:p-10 min-h-screen">
+      <h2 className="text-4xl font-bold text-black mb-10 text-center">
         User Feedback
       </h2>
 
       {isPending ? (
-        <p className="text-center text-white text-xl">Loading feedback...</p>
+        <p className="text-center text-black text-xl">Loading feedback...</p>
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

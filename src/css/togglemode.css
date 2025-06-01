@@ -1,0 +1,150 @@
+:root {
+  --hue: 223;
+  --primary: hsl(var(--hue), 90%, 50%);
+  --trans-dur: 0.6s;
+  --trans-timing: cubic-bezier(0.65, 0, 0.35, 1);
+  --gradient: linear-gradient(
+    to bottom left,
+    #8b5cf6,
+    #d946ef
+  ); /* violet to fuchsia */
+}
+
+.switch,
+.switch__input {
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+}
+.switch {
+  margin: auto;
+  position: relative;
+  user-select: none;
+}
+
+/* Gradient border outside */
+.switch::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 1.25em;
+  background: var(--gradient);
+  z-index: -1;
+}
+
+.switch__input {
+  width: 2.75em;
+  height: 1.5em;
+  border-radius: 0.75em;
+  border: 2px solid #d138fd; /* must be transparent */
+  background-image: var(--gradient), white; /* gradient border + white bg */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color var(--trans-dur),
+    background-image var(--trans-dur);
+}
+
+.switch__input:checked {
+  background-image: var(--gradient), hsl(var(--hue), 10%, 10%);
+}
+
+.switch__icon {
+  position: absolute;
+  top: 0.375em;
+  width: 0.75em;
+  height: 0.75em;
+  pointer-events: none;
+  transition: color var(--trans-dur),
+    transform var(--trans-dur) var(--trans-timing);
+  color: hsla(var(--hue), 10%, 80%);
+}
+
+.switch__icon:first-of-type {
+  left: 0.375em;
+}
+
+.switch__icon:nth-of-type(2) {
+  right: 0.375em;
+  left: auto;
+}
+
+.switch__inner,
+.switch__inner-icons {
+  position: absolute;
+  top: 0.25em;
+  left: 0.25em;
+  width: 2.25em;
+  height: 1em;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.switch__inner:before,
+.switch__inner-icons {
+  transition: transform var(--trans-dur) var(--trans-timing);
+  transform: translateX(-1.25em);
+}
+
+.switch__inner:before {
+  background-image: var(--gradient);
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.switch__inner-icons {
+  pointer-events: none;
+}
+
+.switch__inner-icons .switch__icon {
+  color: white;
+  top: 0.125em;
+  left: 0.125em;
+  transform: translateX(1.25em);
+}
+
+.switch__inner-icons .switch__icon:nth-child(2) {
+  right: 0.125em;
+  left: auto;
+}
+
+.switch__input:checked ~ .switch__icon {
+  color: hsla(var(--hue), 10%, 80%);
+}
+
+.switch__input:checked ~ .switch__inner:before,
+.switch__input:checked ~ .switch__inner-icons {
+  transform: translateX(1.25em);
+}
+
+.switch__input:not(:checked) ~ .switch__icon:first-of-type,
+.switch__input:checked ~ .switch__icon:nth-of-type(2) {
+  transform: rotate(360deg);
+}
+
+.switch__input:checked ~ .switch__inner-icons .switch__icon:first-of-type {
+  transform: translateX(-1.25em) rotate(-360deg);
+}
+
+.switch__input:checked ~ .switch__inner-icons .switch__icon:nth-of-type(2) {
+  transform: translateX(-1.25em) rotate(360deg);
+}
+
+.switch__input:focus-visible {
+  box-shadow: 0 0 0 0.0625em hsla(var(--hue), 90%, 50%, 1),
+    0 0.125em 0.5em hsla(var(--hue), 10%, 10%, 0.1);
+}
+
+.switch__sr {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
