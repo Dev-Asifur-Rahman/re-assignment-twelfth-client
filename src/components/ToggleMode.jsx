@@ -1,12 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "../css/togglemode.css";
+import { Context } from "../js/context";
 
 const ThemeToggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-  }, [darkMode]);
+  const { mode, setMode } = useContext(Context);
+  function toggleMode(e) {
+    if (e.target.checked) {
+      localStorage.setItem("theme", "dark");
+      setMode("dark");
+    } else {
+      localStorage.setItem("theme", "light");
+      setMode("light");
+    }
+  }
 
   return (
     <>
@@ -38,8 +44,8 @@ const ThemeToggle = () => {
           <input
             className="switch__input"
             type="checkbox"
-            checked={darkMode}
-            onChange={() => setDarkMode(!darkMode)}
+            checked={mode === "dark"}
+            onChange={toggleMode}
           />
           <svg
             className="switch__icon"

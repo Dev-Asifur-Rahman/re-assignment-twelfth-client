@@ -8,7 +8,7 @@ import logo from "../assets/images/site_logo_two.svg";
 import ToggleMode from "./ToggleMode";
 
 const NavBar = () => {
-  const { user, role } = useContext(Context);
+  const { user, role, mode } = useContext(Context);
   const navigate = useNavigate();
   const navigateHome = useNavigate();
   const dashboard = useNavigate();
@@ -19,6 +19,7 @@ const NavBar = () => {
       .then((res) => toastSuccess("Signed Out Successfully"))
       .catch((error) => toastError("Something went wrong try again"));
   };
+
 
   const sendLogin = () => {
     navigate("/login");

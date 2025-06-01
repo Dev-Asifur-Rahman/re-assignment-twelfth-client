@@ -13,6 +13,16 @@ function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [role, setRole] = useState(null);
+  const [mode,setMode] = useState(()=>{
+    const theme =  localStorage.getItem('theme')
+    if(!theme){
+      localStorage.setItem('theme','light')
+      return 'light'
+    }
+    else{
+      return theme
+    }
+  })
 
   // context provider object
   const ContextProvider = {
@@ -20,6 +30,8 @@ function App() {
     loading,
     setLoading,
     role,
+    mode,
+    setMode
   };
 
   // user check
