@@ -5,9 +5,9 @@ import useUserRegisteredCamps from "../../../hook/useUserRegisteredCamps";
 import { AiOutlineDelete } from "react-icons/ai";
 import { ApiInstance } from "../../../js/api-instance";
 import { useNavigate } from "react-router";
-import CommonHeading from "../../../components/CommonHeading";
 import { swalError, swalSuccess, toastError } from "../../../js/utils";
 import useTopThreeCamps from "../../../hook/useTopThreeCamps";
+import CommonHeadingNoMargin from "../../../components/CommonHeadingNoMargin";
 
 const RegisteredCamps = () => {
   const [showModal, setShowModal] = useState(false);
@@ -97,7 +97,7 @@ const RegisteredCamps = () => {
 
   return (
     <div>
-      <CommonHeading
+      <CommonHeadingNoMargin
         heading="Registered Camps"
         description="Keep track of all the medical camps you have signed up for."
       />

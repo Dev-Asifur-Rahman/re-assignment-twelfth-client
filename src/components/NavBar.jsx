@@ -20,27 +20,30 @@ const NavBar = () => {
       .catch((error) => toastError("Something went wrong try again"));
   };
 
-
   const sendLogin = () => {
     navigate("/login");
   };
   return (
-    <div className="flex justify-between w-full items-center p-2 min-h-16 bg-base-100 shadow-sm">
+    <div
+      className={` ${
+        mode === "light" ? "bg-base-100" : "bg-black"
+      } flex justify-between w-full items-center lg:px-6 p-2 min-h-16  shadow-sm`}
+    >
       <div
         onClick={() => navigateHome("/")}
         className="inline-flex items-center w-1/2 md:w-1/2 lg:w-fit hover:cursor-pointer"
       >
-        <img src={logo} className="h-[40px]" alt="" />
+        <img src={logo} className={`h-[40px] ${mode === 'light'?'' : 'invert'}`} alt="" />
         <p className="text-xl  md:text-2xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-bl from-violet-500 to-fuchsia-500  font-extrabold md:inline lg:inline">
           CampAID
         </p>
       </div>
       <div id="nav-text" className="navbar-center hidden lg:flex">
-        <div className="flex items-center gap-x-4">
-          <NavLink to={"/"}>Home</NavLink>
-          <NavLink to={"/available-camps"}>Available Camps</NavLink>
+        <div className={`flex items-center ${mode==='light'?"text-black":'text-white'} gap-x-4 `}>
+          <NavLink className={`hover:text-[#d138fd]`} to={"/"}>Home</NavLink>
+          <NavLink className={`hover:text-[#d138fd]`} to={"/available-camps"}>Available Camps</NavLink>
           {user && !role && (
-            <NavLink to={"/dashboard/analytics"}>Dashboard</NavLink>
+            <NavLink className={`hover:text-[#d138fd]`} to={"/dashboard/analytics"}>Dashboard</NavLink>
           )}
           {user && role && (
             <NavLink to={"/dashboard/manage-camps"}>Dashboard</NavLink>
@@ -48,9 +51,9 @@ const NavBar = () => {
         </div>
       </div>
       <div className="inline-flex justify-end  items-center w-1/2 md:w-1/2 lg:w-fit">
-        <section className="flex items-center gap-2">
+        <section className="flex items-center gap-4">
           <ToggleMode></ToggleMode>
-          <div className="flex items-center border">
+          <div className="flex items-center">
             {user ? (
               <div
                 className="dropdown"

@@ -3,7 +3,7 @@ import { Context } from "../../../js/context";
 import { swalSuccess, toastError } from "../../../js/utils";
 import { imageUpload } from "../../../js/imageupload";
 import { update_Profile } from "../../../js/firebase-operation";
-import CommonHeading from "../../../components/CommonHeading";
+import CommonHeadingNoMargin from "../../../components/CommonHeadingNoMargin";
 
 const OrganizerProfile = () => {
   const { user, role } = useContext(Context);
@@ -40,7 +40,7 @@ const OrganizerProfile = () => {
 
   return (
     <section className="w-full">
-      <CommonHeading
+      <CommonHeadingNoMargin
         heading="Organizer Profile"
         description="View and update your information as a camp organizer."
       />

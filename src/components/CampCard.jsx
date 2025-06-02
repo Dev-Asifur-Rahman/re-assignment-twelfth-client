@@ -21,10 +21,10 @@ const CampCard = ({ camp }) => {
         className="w-full h-48 object-cover"
       />
       <div className="p-4 space-y-2">
-        <h2 className="text-xl font-semibold text-gray-800">
+        <h2 title={camp_name} className="text-xl font-semibold text-nowrap truncate overflow-hidden text-ellipsis text-gray-800">
           {camp_name}
         </h2>
-        <p className="text-sm text-gray-500">{appointment_date}</p>
+        <p className="text-sm text-gray-500"><span className="font-semibold">Date : </span> {appointment_date}</p>
         <p className="text-sm text-gray-600">
           <span className="font-semibold">Location:</span>{location}
         </p>
@@ -33,9 +33,6 @@ const CampCard = ({ camp }) => {
         </p>
         <p className="text-sm text-gray-600">
           <span className="font-semibold">Participants:</span> {participants}
-        </p>
-        <p className="text-sm text-gray-700">
-          {description}
         </p>
         <Link to={`/camp-details/${_id}`}>
           <button className="mt-4 font-semibold text-transparent bg-clip-text bg-gradient-to-bl from-violet-500 to-fuchsia-500">

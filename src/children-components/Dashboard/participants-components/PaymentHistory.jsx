@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import useUserPaymentHistory from "../../../hook/useUserPaymentHistory";
 import NoDataUI from "../../../components/NoDataUI";
-import CommonHeading from "../../../components/CommonHeading";
 import LottieSpinner from "../../../components/LottieSpinner";
+import CommonHeadingNoMargin from "../../../components/CommonHeadingNoMargin";
 
 const PaymentHistory = () => {
   const { data, isPending } = useUserPaymentHistory();
@@ -48,7 +48,7 @@ const PaymentHistory = () => {
 
   return (
     <div>
-      <CommonHeading
+      <CommonHeadingNoMargin
         heading="Payment History"
         description="Review your past payments and transaction details."
       />

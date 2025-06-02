@@ -6,7 +6,7 @@ import LottieSpinner from "../../../components/LottieSpinner";
 import { ApiInstance } from "../../../js/api-instance";
 import { swalConfirm, swalError, swalSuccess } from "../../../js/utils";
 import { useNavigate } from "react-router";
-import CommonHeading from "../../../components/CommonHeading";
+import CommonHeadingNoMargin from "../../../components/CommonHeadingNoMargin";
 
 const ManageCamps = () => {
   const { all_camps, isPending, refetch } = useAllCamp();
@@ -52,7 +52,7 @@ const ManageCamps = () => {
 
   return (
     <div className="w-full">
-      <CommonHeading
+      <CommonHeadingNoMargin
         heading="Manage Your Camps"
         description="Edit, update, or remove your existing medical camps."
       />

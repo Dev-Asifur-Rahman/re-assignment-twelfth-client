@@ -16,7 +16,7 @@ import {
   Scatter,
   ResponsiveContainer,
 } from "recharts";
-import CommonHeading from "../../../components/CommonHeading";
+import CommonHeadingNoMargin from "../../../components/CommonHeadingNoMargin";
 
 const Analytics = () => {
   const { user } = useContext(Context);
@@ -32,7 +32,7 @@ const Analytics = () => {
     } else {
       return (
         <section className="w-full">
-          <CommonHeading
+          <CommonHeadingNoMargin
             heading="Analytics Overview"
             description="Gain insights into camp participation and overall impact."
           />

@@ -5,7 +5,7 @@ import { swalSuccess, toastError, toastSuccess } from "../../../js/utils";
 import { imageUpload } from "../../../js/imageupload";
 import { ApiInstance } from "../../../js/api-instance";
 import useAllCamp from "./../../../hook/useAllCamp";
-import CommonHeading from "../../../components/CommonHeading";
+import CommonHeadingNoMargin from "../../../components/CommonHeadingNoMargin";
 
 const AddCamp = () => {
   const { refetch } = useAllCamp();
@@ -61,7 +61,7 @@ const AddCamp = () => {
 
   return (
     <div className="w-full">
-      <CommonHeading
+      <CommonHeadingNoMargin
         heading="Add A New Camp"
         description="Create and publish a new medical camp for participants to join."
       />

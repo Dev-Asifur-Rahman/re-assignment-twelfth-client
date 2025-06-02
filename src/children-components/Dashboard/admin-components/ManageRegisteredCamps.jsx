@@ -5,7 +5,7 @@ import { swalConfirm, swalError, swalSuccess } from "../../../js/utils";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import { ApiInstance } from "../../../js/api-instance";
-import CommonHeading from "../../../components/CommonHeading";
+import CommonHeadingNoMargin from "../../../components/CommonHeadingNoMargin";
 
 const ManageRegisteredCamps = () => {
   const { registered_users, isPending, refetch } = useRegisteredUser();
@@ -57,7 +57,7 @@ const ManageRegisteredCamps = () => {
 
   return (
     <div className="w-full">
-      <CommonHeading
+      <CommonHeadingNoMargin
         heading="Manage Registered Camps"
         description="Oversee participant lists and registrations for your camps."
       />
