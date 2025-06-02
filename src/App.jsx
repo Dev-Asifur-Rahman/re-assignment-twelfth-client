@@ -24,6 +24,19 @@ function App() {
     }
   })
 
+  useEffect(()=>{
+    const bodyMode = document.getElementById('root')
+    if(mode==='dark'){
+      bodyMode.classList.add('bg-black')
+      bodyMode.classList.remove('bg-white')
+    }
+    else{
+      bodyMode.classList.add('bg-white')
+      bodyMode.classList.remove('bg-black')
+    }
+    
+  },[mode])
+
   // context provider object
   const ContextProvider = {
     user,
