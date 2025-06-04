@@ -45,14 +45,16 @@
 .dashboard-navigation a.dark {
   font-size: 14px;
   font-weight: 500;
-  color: black;
+  color: white; /* white text in dark mode */
   border: 1px solid transparent;
   padding: 4px 0 4px 8px;
   border-radius: 6px;
-  background: linear-gradient(white, white) padding-box,
+
+  background: linear-gradient(black, black) padding-box,
     linear-gradient(to bottom left, #8b5cf6, #d946ef) border-box;
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
+
   text-wrap: nowrap;
 }
 
@@ -70,13 +72,13 @@
   text-wrap: nowrap;
 }
 
-.dashboard-navigation a.active {
+.dashboard-navigation a.dark.active {
   background-image: linear-gradient(to bottom left, #8b5cf6, #d946ef);
   color: white;
   border: none;
 }
 
-.dashboard-navigation a.active {
+.dashboard-navigation a.light.active {
   background-image: linear-gradient(to bottom left, #8b5cf6, #d946ef);
   color: white;
   border: none;

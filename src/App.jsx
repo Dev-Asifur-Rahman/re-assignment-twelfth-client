@@ -13,34 +13,39 @@ function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [role, setRole] = useState(null);
-  const [mode, setMode] = useState(() => {
-    const theme = localStorage.getItem("theme");
-    if (!theme) {
-      localStorage.setItem("theme", "light");
-      return "light";
-    } else {
-      return theme;
+  const [mode,setMode] = useState(()=>{
+    const theme =  localStorage.getItem('theme')
+    if(!theme){
+      localStorage.setItem('theme','light')
+      return 'light'
     }
-  });
+    else{
+      return theme
+    }
+  })
 
-  useEffect(() => {
-    const bodyMode = document.getElementById("root");
-    const dashboard_lg_screen_menu = document.querySelectorAll(
-      ".dashboard-navigation a"
-    );
-
-    if (mode === "dark") {
-      bodyMode.classList.replace("bg-white", "bg-black");
-      dashboard_lg_screen_menu.forEach((anchor) => {
-        anchor.classList.replace("light", "dark");
-      });
-    } else {
-      bodyMode.classList.replace("bg-black", "bg-white");
-      dashboard_lg_screen_menu.forEach((anchor) => {
-        anchor.classList.replace("dark", "light");
+  useEffect(()=>{
+    const bodyMode = document.getElementById('root')
+    const dashboard_lg_screen_menu = document.querySelectorAll('.dashboard-navigation a')
+    
+    if(mode==='dark'){
+      bodyMode.classList.add('bg-black')
+      bodyMode.classList.remove('bg-white')
+      dashboard_lg_screen_menu.forEach(anchor =>{
+        anchor.classList.add('dark')
+        anchor.classList.remove('light')
       });
     }
-  }, [mode]);
+    else{
+      bodyMode.classList.add('bg-white')
+      bodyMode.classList.remove('bg-black')
+      dashboard_lg_screen_menu.forEach(anchor =>{
+        anchor.classList.add('light')
+        anchor.classList.remove('dark')
+      });
+    }
+    
+  },[mode])
 
   // context provider object
   const ContextProvider = {
@@ -49,7 +54,7 @@ function App() {
     setLoading,
     role,
     mode,
-    setMode,
+    setMode
   };
 
   // user check

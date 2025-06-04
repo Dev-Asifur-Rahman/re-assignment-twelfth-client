@@ -64,12 +64,19 @@ const Dashboard = () => {
                 mode === "light" ? "bg-white" : "bg-black"
               } dashboard-navigation border-r-2 h-[calc(100vh-64px)]  w-1/6 hidden md:hidden lg:block`}
             >
-              <NavLink to={"/dashboard/manage-camps"}>Manage Camps</NavLink>
-              <NavLink to={"/dashboard/admin-profile"}>Admin Profile</NavLink>
-              <NavLink to={"/dashboard/add-camp"}>Add A Camp</NavLink>
-              <NavLink to={"/dashboard/registered-camps"}>
-                Registered Camps
-              </NavLink>
+              {navigation_route_for_admin.map((route, index) => (
+                <NavLink
+                  key={index}
+                  className={({ isActive }) =>
+                    `${mode === "light" ? "light" : "dark"}${
+                      isActive ? " active" : ""
+                    }`
+                  }
+                  to={route.href}
+                >
+                  {route.route}
+                </NavLink>
+              ))}
             </div>
           ) : (
             <div
@@ -77,12 +84,19 @@ const Dashboard = () => {
                 mode === "light" ? "bg-white" : "bg-black border-white"
               } dashboard-navigation hidden border-r-2 h-[calc(100vh-64px)] md:hidden lg:block  w-1/6 `}
             >
-              <NavLink to={"/dashboard/analytics"}>Analytics</NavLink>
-              <NavLink to={"/dashboard/participant-profile"}>Profile</NavLink>
-              <NavLink to={"/dashboard/history"}>Payment History</NavLink>
-              <NavLink to={"/dashboard/user-registered-camps"}>
-                Registered Camps
-              </NavLink>
+              {navigation_route_for_participants.map((route, index) => (
+                <NavLink
+                  key={index}
+                  className={({ isActive }) =>
+                    `${mode === "light" ? "light" : "dark"}${
+                      isActive ? " active" : ""
+                    }`
+                  }
+                  to={route.href}
+                >
+                  {route.route}
+                </NavLink>
+              ))}
             </div>
           )}
           <div className="w-5/6 h-[calc(100vh-64px)] overflow-y-scroll">
