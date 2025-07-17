@@ -14,7 +14,7 @@ const FeedbackSection = () => {
 
   return (
     <div className="p-6 sm:p-10 min-h-screen">
-      <h2 className="text-4xl font-bold text-black mb-10 text-center">
+      <h2 className="text-4xl font-bold gradient-text mb-10 text-center">
         User Feedback
       </h2>
 

@@ -3,11 +3,12 @@
   --primary: hsl(var(--hue), 90%, 50%);
   --trans-dur: 0.6s;
   --trans-timing: cubic-bezier(0.65, 0, 0.35, 1);
-  --gradient: linear-gradient(
-    to bottom left,
-    #8b5cf6,
-    #d946ef
-  ); /* violet to fuchsia */
+  --gradient: linear-gradient(to bottom left, #8b5cf6, #d946ef);
+}
+
+/* For dark theme icon colors */
+[data-theme="dark"] .switch__icon {
+  color: white;
 }
 
 .switch,
@@ -15,53 +16,53 @@
   display: block;
   -webkit-tap-highlight-color: transparent;
 }
+
 .switch {
   margin: auto;
   position: relative;
   user-select: none;
 }
 
-/* Gradient border outside */
+/* Gradient border outside - SLIMMED */
 .switch::before {
   content: "";
   position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  top: -2px;    /* slimmer border */
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
   border-radius: 1.25em;
   background: var(--gradient);
   z-index: -1;
 }
 
+/* Input toggle */
 .switch__input {
   width: 2.75em;
   height: 1.5em;
   border-radius: 0.75em;
-  border: 2px solid #d138fd; /* must be transparent */
-  background-image: var(--gradient), white; /* gradient border + white bg */
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
+  border: none; /* remove solid border */
+  background: white; /* default light background */
   appearance: none;
   outline: none;
   cursor: pointer;
-  transition: background-color var(--trans-dur),
-    background-image var(--trans-dur);
+  transition: background-color var(--trans-dur), background-image var(--trans-dur);
 }
 
-.switch__input:checked {
-  background-image: var(--gradient), hsl(var(--hue), 10%, 10%);
+/* Dark mode background */
+[data-theme="dark"] .switch__input {
+  background: #1d232a;
 }
 
+/* SVG icons */
 .switch__icon {
   position: absolute;
   top: 0.375em;
   width: 0.75em;
   height: 0.75em;
   pointer-events: none;
-  transition: color var(--trans-dur),
-    transform var(--trans-dur) var(--trans-timing);
-  color: hsla(var(--hue), 10%, 80%);
+  transition: color var(--trans-dur), transform var(--trans-dur) var(--trans-timing);
+  color: #1d232a; /* default icon color */
 }
 
 .switch__icon:first-of-type {
@@ -116,7 +117,7 @@
 }
 
 .switch__input:checked ~ .switch__icon {
-  color: hsla(var(--hue), 10%, 80%);
+  color: white;
 }
 
 .switch__input:checked ~ .switch__inner:before,

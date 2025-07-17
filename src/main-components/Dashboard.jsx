@@ -60,9 +60,7 @@ const Dashboard = () => {
         <section className="w-full lg:flex hidden">
           {role ? (
             <div
-              className={`${
-                mode === "light" ? "bg-white" : "bg-black"
-              } dashboard-navigation border-r-2 h-[calc(100vh-64px)]  w-1/6 hidden md:hidden lg:block`}
+              className={`dashboard-navigation border-r-2 h-[calc(100vh-64px)]  w-1/6 hidden md:hidden lg:block`}
             >
               {navigation_route_for_admin.map((route, index) => (
                 <NavLink
@@ -80,9 +78,7 @@ const Dashboard = () => {
             </div>
           ) : (
             <div
-              className={`${
-                mode === "light" ? "bg-white" : "bg-black border-white"
-              } dashboard-navigation hidden border-r-2 h-[calc(100vh-64px)] md:hidden lg:block  w-1/6 `}
+              className={` dashboard-navigation hidden border-r-2 h-[calc(100vh-64px)] md:hidden lg:block  w-1/6 `}
             >
               {navigation_route_for_participants.map((route, index) => (
                 <NavLink

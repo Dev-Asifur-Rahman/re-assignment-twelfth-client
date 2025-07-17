@@ -31,17 +31,21 @@ const NavBar = () => {
         onClick={() => navigateHome("/")}
         className="inline-flex items-center w-1/2 md:w-1/2 lg:w-fit hover:cursor-pointer"
       >
-        <img src={logo} className={`h-[40px] ${mode === 'light'?'' : 'invert'}`} alt="" />
+        <img
+          src={logo}
+          className={`h-[40px] ${mode === "light" ? "" : "invert"}`}
+          alt=""
+        />
         <p className="text-xl  md:text-2xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-bl from-violet-500 to-fuchsia-500  font-extrabold md:inline lg:inline">
           CampAID
         </p>
       </div>
       <div id="nav-text" className="navbar-center hidden lg:flex">
         <div className={`flex items-center gap-x-4 `}>
-          <NavLink className={`hover:text-[#d138fd]`} to={"/"}>Home</NavLink>
-          <NavLink className={`hover:text-[#d138fd]`} to={"/available-camps"}>Available Camps</NavLink>
+          <NavLink to={"/"}>Home</NavLink>
+          <NavLink to={"/available-camps"}>Available Camps</NavLink>
           {user && !role && (
-            <NavLink className={`hover:text-[#d138fd]`} to={"/dashboard/analytics"}>Dashboard</NavLink>
+            <NavLink to={"/dashboard/analytics"}>Dashboard</NavLink>
           )}
           {user && role && (
             <NavLink to={"/dashboard/manage-camps"}>Dashboard</NavLink>

@@ -2,6 +2,9 @@
 
 @import "tailwindcss";
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@theme{
+  --breakpoint-xl: 321px;
+}
 @plugin "daisyui";
 
 * {
@@ -13,8 +16,16 @@
   font-weight: 500;
 }
 
+#nav-text a:hover{
+  background: linear-gradient(to bottom left, #8b5cf6, #d946ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 #nav-text a.active {
-  color: #d946ef;
+  background: linear-gradient(to bottom left, #8b5cf6, #d946ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 #dropdown-navbar li {
@@ -46,12 +57,11 @@
 .dashboard-navigation a.dark {
   font-size: 14px;
   font-weight: 500;
-  color: white; /* white text in dark mode */
   border: 1px solid transparent;
   padding: 4px 0 4px 8px;
   border-radius: 6px;
 
-  background: linear-gradient(black, black) padding-box,
+  background: linear-gradient(#1d232a, #1d232a) padding-box,
     linear-gradient(to bottom left, #8b5cf6, #d946ef) border-box;
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
@@ -62,7 +72,6 @@
 .dashboard-navigation a.light {
   font-size: 14px;
   font-weight: 500;
-  color: black;
   border: 1px solid transparent;
   padding: 4px 0 4px 8px;
   border-radius: 6px;

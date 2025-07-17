@@ -47,34 +47,34 @@ const OrganizerProfile = () => {
 
       <div className="relative min-h-screen p-8 flex items-center justify-center">
         {/* Profile Section */}
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-2xl p-6 max-w-lg w-full border border-white/20 z-10">
-          <div className="flex justify-center mb-6">
+        <div className=" backdrop-blur-sm rounded-2xl shadow-2xl p-6 max-w-lg w-full border border-white/20 z-10">
+          <div className="flex justify-center lg:justify-start md:justify-start mb-6">
             <img
               src={user?.photoURL}
               alt="Profile"
-              className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-gradient-to-r from-violet-500 to-fuchsia-500"
+              className="w-32 h-32 rounded-full object-cover mb-4 border-2"
             />
           </div>
 
-          <div className="text-center">
+          <div className="lg:text-start md:text-start text-center">
             <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
               {user?.displayName}
             </h1>
 
-            <div className="mt-2 text-sm sm:text-base font-medium text-gray-600">
-              <p>
+            <div className="mt-2 text-sm sm:text-base font-medium ">
+              <p className="">
                 Role:{" "}
-                <span className="text-violet-600">
+                <span className="gradient-text">
                   {role ? "Unknown" : "Participant"}
                 </span>
               </p>
             </div>
 
             <div className="mt-4">
-              <h3 className="text-lg sm:text-xl font-medium text-violet-600">
+              <h3 className="text-sm sm:text-base font-medium">
                 Email
               </h3>
-              <p className="text-sm sm:text-lg text-gray-700">{user?.email}</p>
+              <p className="text-sm sm:text-base font-medium gradient-text">{user?.email}</p>
             </div>
 
             <button
