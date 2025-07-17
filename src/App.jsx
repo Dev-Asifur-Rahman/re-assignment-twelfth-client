@@ -7,45 +7,19 @@ import { auth } from "./js/firebase-auth";
 import { onAuthStateChanged } from "firebase/auth";
 import { ApiInstance } from "./js/api-instance";
 import { Toaster } from "react-hot-toast";
-import ScrollToTop from "./ScrollToTop";
 function App() {
   // states
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [role, setRole] = useState(null);
-  const [mode,setMode] = useState(()=>{
-    const theme =  localStorage.getItem('theme')
-    if(!theme){
-      localStorage.setItem('theme','light')
-      return 'light'
-    }
-    else{
-      return theme
-    }
-  })
+  const [mode, setMode] = useState(() => {
+    return localStorage.getItem("theme") || "light";
+  });
 
-  useEffect(()=>{
-    const bodyMode = document.getElementById('root')
-    const dashboard_lg_screen_menu = document.querySelectorAll('.dashboard-navigation a')
-    
-    if(mode==='dark'){
-      bodyMode.classList.add('bg-black')
-      bodyMode.classList.remove('bg-white')
-      dashboard_lg_screen_menu.forEach(anchor =>{
-        anchor.classList.add('dark')
-        anchor.classList.remove('light')
-      });
-    }
-    else{
-      bodyMode.classList.add('bg-white')
-      bodyMode.classList.remove('bg-black')
-      dashboard_lg_screen_menu.forEach(anchor =>{
-        anchor.classList.add('light')
-        anchor.classList.remove('dark')
-      });
-    }
-    
-  },[mode])
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', mode);
+    localStorage.setItem('theme', mode);
+  }, [mode]);
 
   // context provider object
   const ContextProvider = {
@@ -54,7 +28,7 @@ function App() {
     setLoading,
     role,
     mode,
-    setMode
+    setMode,
   };
 
   // user check

@@ -25,9 +25,7 @@ const NavBar = () => {
   };
   return (
     <div
-      className={` ${
-        mode === "light" ? "bg-base-100" : "bg-black"
-      } flex justify-between w-full items-center lg:px-6 p-2 min-h-16  shadow-sm`}
+      className={`flex justify-between w-full items-center lg:px-6 p-2 min-h-16  shadow-sm`}
     >
       <div
         onClick={() => navigateHome("/")}
@@ -39,7 +37,7 @@ const NavBar = () => {
         </p>
       </div>
       <div id="nav-text" className="navbar-center hidden lg:flex">
-        <div className={`flex items-center ${mode==='light'?"text-black":'text-white'} gap-x-4 `}>
+        <div className={`flex items-center gap-x-4 `}>
           <NavLink className={`hover:text-[#d138fd]`} to={"/"}>Home</NavLink>
           <NavLink className={`hover:text-[#d138fd]`} to={"/available-camps"}>Available Camps</NavLink>
           {user && !role && (
