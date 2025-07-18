@@ -2,7 +2,7 @@
 
 @import "tailwindcss";
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-@theme{
+@theme {
   --breakpoint-xl: 321px;
 }
 @plugin "daisyui";
@@ -11,12 +11,16 @@
   font-family: "Montserrat", sans-serif;
 }
 
+:root {
+  --angle: 0deg;
+}
+
 #nav-text a {
   font-size: 16px;
   font-weight: 500;
 }
 
-#nav-text a:hover{
+#nav-text a:hover {
   background: linear-gradient(to bottom left, #8b5cf6, #d946ef);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -103,6 +107,54 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+ 
+
+ /* dynamic gradient border  */
+.dynamic-gradient-border::after,
+.dynamic-gradient-border::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 8px;
+  background-image: conic-gradient(
+    from var(--angle),
+    #d946ef,
+    transparent,
+    transparent,
+    #8b5cf6,
+    transparent,
+    transparent
+  );
+  z-index: -1;
+  animation: 8s border-spin linear infinite;
+}
+
+.dynamic-gradient-border::before {
+  filter: blur(0.5rem);
+  opacity: 0.1px;
+}
+
+@keyframes border-spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+
+.border-rounded-match {
+  border-radius: calc(0.75rem - 4px) calc(0.75rem - 4px) 0 0;
+}
 
 .tr td {
   cursor: pointer;
@@ -120,5 +172,7 @@
 }
 
 /* bg-linear-to-bl from-violet-500 to-fuchsia-500 */
+
+/* linear-gradient(to bottom left, #8b5cf6, #d946ef) */
 
 /* <span className="loading text-white loading-dots loading-sm"></span> */

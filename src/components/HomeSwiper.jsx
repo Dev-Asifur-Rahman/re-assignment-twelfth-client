@@ -10,7 +10,7 @@ const HomeSwiper = () => {
   const { all_camps, isPending, refetch } = useAllCamp();
   return (
     <>
-      <section className="w-full h-[320px] ">
+      <section className="w-full h-[340px]">
         <Swiper
           slidesPerView={"auto"}
           spaceBetween={30}

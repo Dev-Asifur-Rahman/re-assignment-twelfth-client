@@ -13,14 +13,14 @@ const CampCard = ({ camp }) => {
     description,
   } = camp;
   return (
-    <div className=" rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105 duration-200">
+    <div className=" rounded-xl shadow-md  transition-transform hover:scale-105 duration-200 relative ">
       <img
         src={image}
         alt={camp_name}
         className="w-full h-48 object-cover"
       />
       <div className="p-4 space-y-2">
-        <h2 title={camp_name} className="text-xl font-semibold text-nowrap truncate overflow-hidden text-ellipsis ">
+        <h2 title={camp_name} className="text-xl  font-semibold text-nowrap truncate overflow-hidden text-ellipsis ">
           {camp_name}
         </h2>
         <p className="text-sm "><span className="font-semibold">Date : </span> {appointment_date}</p>

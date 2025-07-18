@@ -1,4 +1,3 @@
-import React from "react";
 import HomeSwiper from "../../components/HomeSwiper";
 import Banner from "../../components/Banner";
 import CommonHeading from "../../components/CommonHeading";
@@ -6,11 +5,12 @@ import { NavLink } from "react-router";
 
 import TopFavouriteCamp from "../../components/TopFavouriteCamp";
 import ReviewSection from "../../components/ReviewSection"
+import Test from "../../components/Test";
 
 function Home() {
   
   return (
-    <div>
+    <div className="">
       <Banner></Banner>
       <CommonHeading
         heading="Most Popular Medical Camps"
