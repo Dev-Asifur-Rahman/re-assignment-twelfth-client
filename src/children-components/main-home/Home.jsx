@@ -5,7 +5,6 @@ import { NavLink } from "react-router";
 
 import TopFavouriteCamp from "../../components/TopFavouriteCamp";
 import ReviewSection from "../../components/ReviewSection"
-import Test from "../../components/Test";
 
 function Home() {
   

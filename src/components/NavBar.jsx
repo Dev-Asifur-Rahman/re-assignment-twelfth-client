@@ -4,8 +4,8 @@ import { logoutUser } from "../js/firebase-operation";
 import { toastError, toastSuccess } from "../js/utils";
 import { NavLink, useNavigate } from "react-router";
 import icon from "../assets/user_icon.svg";
-import logo from "../assets/images/site_logo_two.svg";
 import ToggleMode from "./ToggleMode";
+import camplogo from '../assets/images/camp-logo-v-six.png'
 
 const NavBar = () => {
   const { user, role, mode } = useContext(Context);
@@ -29,11 +29,11 @@ const NavBar = () => {
     >
       <div
         onClick={() => navigateHome("/")}
-        className="inline-flex items-center w-1/2 md:w-1/2 lg:w-fit hover:cursor-pointer"
+        className="inline-flex items-center gap-1 w-1/2 md:w-1/2 lg:w-fit hover:cursor-pointer"
       >
         <img
-          src={logo}
-          className={`h-[40px] ${mode === "light" ? "" : "invert"}`}
+          src={camplogo}
+          className={`h-[25px] w-[25px]`}
           alt=""
         />
         <p className="text-xl  md:text-2xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-bl from-violet-500 to-fuchsia-500  font-extrabold md:inline lg:inline">

@@ -1,13 +1,13 @@
-import React from "react";
-import icon from "../assets/images/site_logo_two.svg"
+import icon from "../assets/images/camp-logo-v-six.png";
 
 const Footer = () => {
   return (
-    <footer className="footer sm:footer-horizontal bg-white text-black p-10 shadow-inner">
+    <footer className="footer sm:footer-horizontal p-10 shadow-inner">
       <aside>
-        <img className="h-[50px] w-[50px]" src={icon} alt="" />
+        <img className="h-[30px] w-[30px]" src={icon} alt="" />
         <p>
-          CampAID Organization Ltd.
+          <span className="gradient-text font-bold">CampAID </span>
+           Organization Ltd.
           <br />
           Providing reliable service since 2008
         </p>
