@@ -46,12 +46,12 @@ const Banner = () => {
       }}
       loop={true}
       modules={[Autoplay]}
-      className="w-full mb-4 lg:h-[550px] md:h-[400px] h-[250px]"
+      className="w-[95%] my-4 rounded-lg mx-auto lg:h-[550px] md:h-[400px] h-[250px]"
     >
       {slides.map((slide, idx) => (
         <SwiperSlide key={idx}>
           <div
-            className="w-full h-full bg-center bg-cover relative"
+            className="w-full h-full rounded-lg bg-center bg-cover relative"
             style={{
               backgroundImage: `url(${slide.image})`,
             }}
