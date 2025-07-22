@@ -20,7 +20,11 @@ const HomeSwiper = () => {
             .sort((a, b) => b.participants - a.participants)
             .slice(0, 6)
             .map((camp, index) => (
-              <SwiperSlide key={index} style={{ width: "250px" }} className="">
+              <SwiperSlide
+                key={index}
+                style={{ width: "250px" }}
+                className="ml-5"
+              >
                 <HomeCard camp={camp} />
               </SwiperSlide>
             ))}

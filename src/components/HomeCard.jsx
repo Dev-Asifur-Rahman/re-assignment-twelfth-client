@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import GlareHover from "../Component_Style/GlareHover";
 
 const HomeCard = ({ camp }) => {
   const {
@@ -16,7 +17,7 @@ const HomeCard = ({ camp }) => {
       <div className="flex flex-col gap-y-1">
         <img
           src={image}
-          className="h-[120px] w-full border-rounded-match"
+          className="h-[120px] relative z-[3] w-full border-rounded-match"
           alt=""
         />
         <div className="px-3 py-2">

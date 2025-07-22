@@ -57,15 +57,17 @@ const Banner = () => {
             }}
           >
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30 z-0"></div>
+            <div className="hero-overlay absolute z-[2]"></div>
+            {/* <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30 z-0"></div> */}
 
             {/* Slide Content */}
-            <div className="relative z-10 flex items-center justify-center h-full px-4">
-              <div className="text-center text-white max-w-2xl">
+            <div className="relative z-[3] flex items-center justify-center h-full md:w-3/5 lg:w-2/4 px-4 md:px-8 lg:px-10">
+              <div className="text-center md:text-start lg:text-start  text-white ">
                 <h2 className="text-xl md:text-3xl lg:text-5xl font-bold mb-4">
                   {slide.title}
                 </h2>
-                <p className="text-sm md:text-lg">{slide.description}</p>
+                <p className="text-sm md:text-lg mb-4">{slide.description}</p>
+                <button className="btn text-white bg-linear-to-bl from-violet-500 to-fuchsia-500 outline-none border-none">Get Started</button>
               </div>
             </div>
           </div>

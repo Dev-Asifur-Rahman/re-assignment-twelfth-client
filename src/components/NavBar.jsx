@@ -25,7 +25,7 @@ const NavBar = () => {
   };
   return (
     <div
-      className={`flex justify-between w-full items-center lg:px-6 p-2 min-h-16  shadow-sm`}
+      className={`flex justify-between w-full items-center lg:px-6 p-2 min-h-16`}
     >
       <div
         onClick={() => navigateHome("/")}

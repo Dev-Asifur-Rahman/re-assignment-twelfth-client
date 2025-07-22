@@ -4,10 +4,9 @@ import CommonHeading from "../../components/CommonHeading";
 import { NavLink } from "react-router";
 
 import TopFavouriteCamp from "../../components/TopFavouriteCamp";
-import ReviewSection from "../../components/ReviewSection"
+import ReviewSection from "../../components/ReviewSection";
 
 function Home() {
-  
   return (
     <div className="">
       <Banner></Banner>
@@ -30,6 +29,9 @@ function Home() {
       />
       <TopFavouriteCamp></TopFavouriteCamp>
       <ReviewSection></ReviewSection>
+      <section>
+        
+      </section>
     </div>
   );
 }

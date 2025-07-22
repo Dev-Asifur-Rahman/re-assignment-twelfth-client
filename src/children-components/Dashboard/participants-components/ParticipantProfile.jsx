@@ -45,18 +45,18 @@ const OrganizerProfile = () => {
         description="View and manage your personal details and camp activities."
       />
 
-      <div className="relative min-h-screen p-8 flex items-center justify-center">
+      <div className="relative h-fit lg:p-8 md:p-8 px-8 flex items-center justify-center">
         {/* Profile Section */}
-        <div className=" backdrop-blur-sm rounded-2xl shadow-2xl p-6 max-w-lg w-full border border-white/20 z-10">
-          <div className="flex justify-center lg:justify-start md:justify-start mb-6">
+        <div className=" backdrop-blur-sm rounded-2xl shadow-2xl p-6 max-w-lg w-full border border-white/20 z-10 lg:my-15 md:my-0 my-0 flex flex-col md:flex-row lg:flex-row lg:items-center md:items-center lg:gap-5 md:gap-5 gap-2">
+          <div className=" flex md:w-fit lg:w-fit w-full justify-center lg:justify-start md:justify-start lg:mb-6 md:mb-6 mb-3">
             <img
               src={user?.photoURL}
               alt="Profile"
-              className="w-32 h-32 rounded-full object-cover mb-4 border-2"
+              className="w-32 h-32 rounded-full object-cover border-2"
             />
           </div>
 
-          <div className="lg:text-start md:text-start text-center">
+          <div className="text-start">
             <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
               {user?.displayName}
             </h1>
@@ -71,15 +71,14 @@ const OrganizerProfile = () => {
             </div>
 
             <div className="mt-4">
-              <h3 className="text-sm sm:text-base font-medium">
-                Email
-              </h3>
-              <p className="text-sm sm:text-base font-medium gradient-text">{user?.email}</p>
+              <h3 className="text-sm sm:text-base font-medium">Email</h3>
+              <p className="text-sm sm:text-base font-medium gradient-text">
+                {user?.email}
+              </p>
             </div>
-
             <button
               onClick={() => setIsModalOpen(true)}
-              className="mt-6 w-full py-2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-lg hover:from-violet-600 hover:to-fuchsia-600 transition"
+              className="mt-6 w-fit p-2 px-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-lg hover:from-violet-600 hover:to-fuchsia-600 transition"
             >
               Update Profile
             </button>
