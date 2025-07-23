@@ -44,14 +44,14 @@ const OrganizerProfile = () => {
         heading="Organizer Profile"
         description="View and update your information as a camp organizer."
       />
-      <div className="relative min-h-screen p-8 flex items-center justify-center">
+      <div className="relative h-fit lg:p-8 md:p-8 px-8 flex items-center justify-center">
         {/* Profile Section */}
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-2xl p-6 max-w-lg w-full border border-white/20 z-10">
-          <div className="flex justify-center mb-6">
+        <div className="bbackdrop-blur-sm rounded-2xl shadow-2xl p-6 max-w-lg w-full border border-white/20 z-10 lg:my-15 md:my-0 my-0 flex flex-col md:flex-row lg:flex-row lg:items-center md:items-center lg:gap-5 md:gap-5 gap-2">
+          <div className="flex md:w-fit lg:w-fit w-full justify-center lg:justify-start md:justify-start lg:mb-6 md:mb-6 mb-3">
             <img
               src={user?.photoURL}
               alt="Profile"
-              className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-gradient-to-r from-violet-500 to-fuchsia-500"
+              className="w-32 h-32 rounded-full object-cover border-2"
             />
           </div>
 
@@ -60,10 +60,10 @@ const OrganizerProfile = () => {
               {user?.displayName}
             </h1>
 
-            <div className="mt-2 text-sm sm:text-base font-medium text-gray-600">
+            <div className="mt-2 text-sm sm:text-base font-medium ">
               <p>
                 Role:{" "}
-                <span className="text-violet-600">
+                <span className="gradient-text">
                   {role ? "Admin" : "Unknown"}
                 </span>
               </p>
