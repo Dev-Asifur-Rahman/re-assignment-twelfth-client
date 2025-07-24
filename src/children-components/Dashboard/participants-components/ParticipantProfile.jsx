@@ -93,7 +93,7 @@ const OrganizerProfile = () => {
           >
             <form
               onSubmit={updateProfile}
-              className="bg-white rounded-lg shadow-xl p-6 w-11/12 max-w-md"
+              className="bg-white text-black rounded-lg shadow-xl p-6 w-11/12 max-w-md"
               onClick={(e) => e.stopPropagation()} // Prevent closing on modal click
             >
               <div className="mb-4">
@@ -108,7 +108,7 @@ const OrganizerProfile = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-sm  font-medium mb-1">
                   PhotoURL
                 </label>
                 <input type="file" className="file-input w-full" name="image" />

@@ -46,7 +46,7 @@ const OrganizerProfile = () => {
       />
       <div className="relative h-fit lg:p-8 md:p-8 px-8 flex items-center justify-center">
         {/* Profile Section */}
-        <div className="bbackdrop-blur-sm rounded-2xl shadow-2xl p-6 max-w-lg w-full border border-white/20 z-10 lg:my-15 md:my-0 my-0 flex flex-col md:flex-row lg:flex-row lg:items-center md:items-center lg:gap-5 md:gap-5 gap-2">
+        <div className="backdrop-blur-sm rounded-2xl shadow-2xl p-6 max-w-lg w-full border border-white/20 z-10 lg:my-15 md:my-0 my-0 flex flex-col md:flex-row lg:flex-row lg:items-center md:items-center lg:gap-5 md:gap-5 gap-2">
           <div className="flex md:w-fit lg:w-fit w-full justify-center lg:justify-start md:justify-start lg:mb-6 md:mb-6 mb-3">
             <img
               src={user?.photoURL}
@@ -55,7 +55,7 @@ const OrganizerProfile = () => {
             />
           </div>
 
-          <div className="text-center">
+          <div className="text-start">
             <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
               {user?.displayName}
             </h1>
@@ -93,10 +93,10 @@ const OrganizerProfile = () => {
           >
             <form
               onSubmit={updateProfile}
-              className="bg-white rounded-lg shadow-xl p-6 w-11/12 max-w-md"
+              className="bg-white text-white rounded-lg shadow-xl p-6 w-11/12 max-w-md"
               onClick={(e) => e.stopPropagation()} // Prevent closing on modal click
             >
-              <div className="mb-4">
+              <div className="mb-4 ">
                 <label className="block text-sm font-medium mb-1">Name</label>
                 <input
                   type="text"

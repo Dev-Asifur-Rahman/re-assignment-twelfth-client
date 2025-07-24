@@ -61,7 +61,7 @@ const Banner = () => {
             {/* <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30 z-0"></div> */}
 
             {/* Slide Content */}
-            <div className="relative z-[3] flex items-center justify-center h-full md:w-3/5 lg:w-2/4 px-4 md:px-8 lg:px-10">
+            <div className="relative z-[3] flex items-center justify-center h-full md:w-3/5 lg:w-2/4 px-4 md:px-8 lg:px-14">
               <div className="text-center md:text-start lg:text-start  text-white ">
                 <h2 className="text-xl md:text-3xl lg:text-5xl font-bold mb-4">
                   {slide.title}
