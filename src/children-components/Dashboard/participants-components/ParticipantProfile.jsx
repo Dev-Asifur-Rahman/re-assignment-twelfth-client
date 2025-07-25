@@ -108,10 +108,10 @@ const OrganizerProfile = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-sm  font-medium mb-1">
+                <label className="block text-sm font-medium mb-1">
                   PhotoURL
                 </label>
-                <input type="file" className="file-input w-full" name="image" />
+                <input type="file" className="file-input bg-white w-full" name="image" />
                 {user && (
                   <label className="block text-sm font-medium mb-1">
                     ({user?.photoURL})

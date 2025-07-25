@@ -88,7 +88,7 @@ const OrganizerProfile = () => {
         {/* Modal Overlay + Content */}
         {isModalOpen && (
           <div
-            className="fixed inset-0 flex items-center justify-center z-50 bg-black/30 backdrop-blur-sm"
+            className="fixed inset-0 flex items-center justify-center z-50  backdrop-blur-sm"
             onClick={() => setIsModalOpen(false)}
           >
             <form
@@ -100,7 +100,7 @@ const OrganizerProfile = () => {
                 <label className="block text-sm font-medium mb-1">Name</label>
                 <input
                   type="text"
-                  name="name"
+                  name=" name"
                   defaultValue={user?.displayName || ""}
                   className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-violet-500"
                   placeholder="Enter your name"
@@ -111,7 +111,7 @@ const OrganizerProfile = () => {
                 <label className="block text-sm font-medium mb-1">
                   PhotoURL
                 </label>
-                <input type="file" className="file-input w-full" name="image" />
+                <input type="file" className="file-input bg-white w-full" name="image" />
                 {user && (
                   <label className="block overflow-hidden text-sm font-medium mb-1">
                     ({user?.photoURL})
