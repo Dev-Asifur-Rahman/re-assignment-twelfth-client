@@ -162,6 +162,7 @@ th, .gradient-text {
 
 #dashboard-menu {
   background-color: white;
+  color: black;
   border-radius: 8px;
   border: 1px solid #d946ef;
   padding: 4px;

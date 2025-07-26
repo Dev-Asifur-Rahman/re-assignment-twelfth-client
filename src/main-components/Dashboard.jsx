@@ -66,7 +66,7 @@ const Dashboard = () => {
                 <NavLink
                   key={index}
                   className={({ isActive }) =>
-                    `${mode === "light" ? "light" : "dark"}${
+                    `${
                       isActive ? " active" : ""
                     }`
                   }
@@ -84,7 +84,7 @@ const Dashboard = () => {
                 <NavLink
                   key={index}
                   className={({ isActive }) =>
-                    `${mode === "light" ? "light" : "dark"}${
+                    `${
                       isActive ? " active" : ""
                     }`
                   }
