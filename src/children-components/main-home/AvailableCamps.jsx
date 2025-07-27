@@ -123,9 +123,9 @@ const AvailableCamps = () => {
   return (
     <>
       {/* data query div  */}
-      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 px-4 my-4">
+      <div className="w-full flex flex-col  md:flex-row items-center justify-between gap-4 px-4 my-4">
         {/* Search Bar */}
-        <label className="input lg:w-[250px] w-full md:w-[200px] flex items-center gap-2 border px-3 py-2 rounded">
+        <label className="input lg:w-[250px] w-full md:w-[200px] flex items-center gap-2  px-3 py-2 rounded focus-within:ring-0 focus-within:outline-none ">
           <svg
             className="h-5 w-5 opacity-50"
             xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@ const AvailableCamps = () => {
           <input
             type="search"
             placeholder="Search camps..."
-            className="outline-none w-full"
+            className="w-full "
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -155,7 +155,8 @@ const AvailableCamps = () => {
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
-          className="select select-bordered"
+          className="select select-bordered focus:outline-none
+          "
         >
           <option value="default">Sort By: Default</option>
           <option value="mostRegistered">Most Registered</option>
@@ -166,7 +167,7 @@ const AvailableCamps = () => {
 
       {/* Camp Cards */}
       <div className="py-10 px-4 min-h-screen">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
           {currentCamps.map((camp) => (
             <CampCard key={camp._id} camp={camp} />
           ))}
