@@ -17,7 +17,7 @@ const CampCard = ({ camp }) => {
         <img
           src={image}
           alt={camp_name}
-          className="w-full rounded-t-xl h-48 object-cover"
+          className="w-full rounded-t-xl lg:h-48 md:h-48 h-36 object-cover"
         />
         <div className="p-4 space-y-2">
           <h2
