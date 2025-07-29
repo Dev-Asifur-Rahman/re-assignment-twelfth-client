@@ -73,7 +73,7 @@ const OrganizerProfile = () => {
               <h3 className="text-lg sm:text-xl font-medium text-violet-600">
                 Email
               </h3>
-              <p className="text-sm sm:text-lg text-gray-700">{user?.email}</p>
+              <p className="text-sm sm:text-lg">{user?.email}</p>
             </div>
 
             <button

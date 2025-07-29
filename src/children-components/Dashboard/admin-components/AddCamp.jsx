@@ -69,7 +69,7 @@ const AddCamp = () => {
       <form onSubmit={add_camp} className=" px-6">
         <fieldset
           id="camp-div"
-          className="fieldset w-full grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-2 place-items-center"
+          className="fieldset w-full grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-items-center"
         >
           <div>
             <legend className="fieldset-legend">Camp Name</legend>
@@ -100,6 +100,7 @@ const AddCamp = () => {
           <div className="relative">
             <legend className="fieldset-legend">Appointment Date</legend>
             <button
+              id="appointment-date-button"
               type="button"
               onClick={() => setOpen(!open)}
               className="input"

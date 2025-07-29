@@ -3,6 +3,11 @@ import InterceptorProvider from "../components/InterceptorProvider";
 import { Context } from "../js/context";
 import LottieSpinner from "../components/LottieSpinner";
 import { NavLink, Outlet, useLocation } from "react-router";
+import { MdManageAccounts } from "react-icons/md";
+import { GrUserAdmin } from "react-icons/gr";
+import { MdAddHome } from "react-icons/md";
+import { MdAssignmentAdd } from "react-icons/md";
+
 
 import NavBar from "../components/NavBar";
 
@@ -14,18 +19,23 @@ const Dashboard = () => {
     {
       href: "/dashboard/manage-camps",
       route: "Manage Camps",
+      icon: <MdManageAccounts />,
     },
     {
       href: "/dashboard/admin-profile",
       route: "Admin Profile",
+      icon: <GrUserAdmin />,
     },
     {
       href: "/dashboard/add-camp",
       route: "Add a Camp",
+      icon:<MdAddHome />,
+
     },
     {
       href: "/dashboard/registered-camps",
       route: "Registered Camps",
+      icon:<MdAssignmentAdd />,
     },
   ];
 
@@ -60,33 +70,32 @@ const Dashboard = () => {
         <section className="w-full lg:flex hidden">
           {role ? (
             <div
-              className={`dashboard-navigation border-r-2 h-[calc(100vh-64px)]  w-1/6 hidden md:hidden lg:block`}
+              className={`dashboard-navigation bg-[#f8f8f8] dark:bg-[#171c22] h-[calc(100vh-64px)]  w-1/6 hidden md:hidden lg:block`}
             >
               {navigation_route_for_admin.map((route, index) => (
                 <NavLink
                   key={index}
                   className={({ isActive }) =>
-                    `${mode} ${
-                      isActive ? " active" : ""
-                    }`
+                    `${mode} ${isActive ? " active" : ""}`
                   }
                   to={route.href}
                 >
-                  {route.route}
+                  <span className="flex gap-1 items-center">
+                    {route.icon}
+                    {route.route}
+                  </span>
                 </NavLink>
               ))}
             </div>
           ) : (
             <div
-              className={` dashboard-navigation hidden border-r-2 h-[calc(100vh-64px)] md:hidden lg:block  w-1/6 `}
+              className={` dashboard-navigation hidden bg-[#f8f8f8] dark:bg-[#171c22] h-[calc(100vh-64px)] md:hidden lg:block  w-1/6 `}
             >
               {navigation_route_for_participants.map((route, index) => (
                 <NavLink
                   key={index}
                   className={({ isActive }) =>
-                    `${mode} ${
-                      isActive ? " active" : ""
-                    }`
+                    `${mode} ${isActive ? " active" : ""}`
                   }
                   to={route.href}
                 >

@@ -20,7 +20,7 @@ const CallyCalender = ({setCalenderDate,setOpen,open}) => {
   }, []);
   return (
     <>
-      <calendar-date ref={Calender} className="absolute top-full left-0 z-50 bg-white shadow-md mt-1">
+      <calendar-date ref={Calender} className="absolute top-full left-0 z-50 bg-white dark:bg-[#1d232a] shadow-md mt-1">
         <calendar-month></calendar-month>
       </calendar-date>
     </>
