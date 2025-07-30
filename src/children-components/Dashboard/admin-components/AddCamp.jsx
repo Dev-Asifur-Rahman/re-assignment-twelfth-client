@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "cally";
 import CallyCalender from "../../../components/CallyCalender";
 import { swalSuccess, toastError, toastSuccess } from "../../../js/utils";
@@ -67,12 +67,12 @@ const AddCamp = () => {
       />
 
       <form onSubmit={add_camp} className=" px-6">
-        <fieldset
+        <section
           id="camp-div"
-          className="fieldset w-full grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-items-center"
+          className="grid lg:grid-cols-2 place-items-center border w-full"
         >
-          <div>
-            <legend className="fieldset-legend">Camp Name</legend>
+          <div className=" border w-fit">
+            <legend className="fieldset-legend w-fit">Camp Name</legend>
             <input
               required
               type="text"
@@ -160,14 +160,14 @@ const AddCamp = () => {
               placeholder="Description"
             />
           </div>
-          <button className="my-5 btn text-white bg-linear-to-bl from-violet-500 to-fuchsia-500 lg:col-span-2 md:col-span-2 col-span-1">
+          {/* <button className="my-5 btn text-white bg-linear-to-bl from-violet-500 to-fuchsia-500 lg:col-span-2 md:col-span-2 col-span-1">
             {loading ? (
               <span className="loading text-white loading-dots loading-sm"></span>
             ) : (
               "Add Camp"
             )}
-          </button>
-        </fieldset>
+          </button> */}
+        </section>
       </form>
     </div>
   );

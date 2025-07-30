@@ -29,8 +29,27 @@ function Home() {
       />
       <TopFavouriteCamp></TopFavouriteCamp>
       <ReviewSection></ReviewSection>
-      <section>
-        
+      <section className="grid grid-cols-2 place-items-center border">
+        <div className=" border w-fit">
+          <legend className="fieldset-legend w-fit">Camp Name</legend>
+          <input
+            required
+            type="text"
+            name="camp_name"
+            className="input"
+            placeholder="Camp Name"
+          />
+        </div>
+        <div className=" border w-fit">
+          <legend className="fieldset-legend w-fit">Camp Name</legend>
+          <input
+            required
+            type="text"
+            name="camp_name"
+            className="input"
+            placeholder="Camp Name"
+          />
+        </div>
       </section>
     </div>
   );
