@@ -82,6 +82,7 @@ const OrganizerProfile = () => {
             >
               Update Profile
             </button>
+            
           </div>
         </div>
 
@@ -111,7 +112,11 @@ const OrganizerProfile = () => {
                 <label className="block text-sm font-medium mb-1">
                   PhotoURL
                 </label>
-                <input type="file" className="file-input bg-white w-full" name="image" />
+                <input
+                  type="file"
+                  className="file-input bg-white w-full"
+                  name="image"
+                />
                 {user && (
                   <label className="block overflow-hidden text-sm font-medium mb-1">
                     ({user?.photoURL})

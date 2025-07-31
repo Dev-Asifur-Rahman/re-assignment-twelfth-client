@@ -99,7 +99,8 @@
 }
 
 #camp-div div {
-  width: 100%;
+  width: 70%;
+  max-width: 300px;
 }
 
 th, .gradient-text {

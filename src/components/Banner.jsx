@@ -1,12 +1,10 @@
-import React from "react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import bannerOne from "../../public/banner-images/bannerimageone.jpeg";
-import bannerTwo from "./../../public/banner-images/bannerimagetwo.jpg";
-import bannerThree from "./../../public/banner-images/bannerimagethree.jpg";
-import bannerFour from "./../../public/banner-images/bannerimagefour.png";
+
 import { Autoplay } from "swiper/modules";
 
 const slides = [
@@ -14,25 +12,25 @@ const slides = [
     title: "500+ Patients Treated in One Day",
     description:
       "A landmark medical camp in Bogura provided care to over 500 people in 8 hours.",
-    image: bannerOne,
+    image: "/public/banner-images/bannerimageone.webp",
   },
   {
     title: "Free Eye Surgeries for the Elderly",
     description:
       "120+ elderly citizens received cataract surgeries — bringing their world back into focus.",
-    image: bannerTwo,
+    image:"/public/banner-images/bannerimagetwo.jpg",
   },
   {
     title: "Hope and Healing Through Volunteers",
     description:
       "Dedicated medical students made a huge impact by providing care and compassion.",
-    image: bannerThree,
+    image: "/public/banner-images/bannerimagethree.jpg",
   },
   {
     title: "Smiles Returned to Children",
     description:
       "Essential vaccines and nutrition helped over 200 children towards a healthier future.",
-    image: bannerFour,
+    image:"/public/banner-images/bannerimagefour.png",
   },
 ];
 

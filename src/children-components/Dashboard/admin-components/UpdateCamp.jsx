@@ -8,8 +8,8 @@ import useAllCamp from "../../../hook/useAllCamp";
 
 const UpdateCamp = () => {
   const location = useLocation();
-  const navigate = useNavigate()
-  const {refetch} = useAllCamp()
+  const navigate = useNavigate();
+  const { refetch } = useAllCamp();
   const camp_object = location?.state;
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -18,7 +18,7 @@ const UpdateCamp = () => {
   const update_camp = async (e) => {
     e.preventDefault();
     setLoading(true);
-    let final_image = camp_object?.image 
+    let final_image = camp_object?.image;
     const target = e.target;
     const camp_name = target.camp_name.value;
     const imageFile = target.image.files[0];
@@ -30,20 +30,20 @@ const UpdateCamp = () => {
     if (imageFile) {
       const uploaded_image = await imageUpload(imageFile);
 
-      if(!uploaded_image){
-        setLoading(false)
-        return toastError("Image Upload Failed")
+      if (!uploaded_image) {
+        setLoading(false);
+        return toastError("Image Upload Failed");
       }
-      final_image = uploaded_image
+      final_image = uploaded_image;
     }
-    if(calenderDate === "Pick a Date"){
-        setLoading(false)
-        return toastError("Enter Date")
+    if (calenderDate === "Pick a Date") {
+      setLoading(false);
+      return toastError("Enter Date");
     }
     const appointment_date = calenderDate;
     const camp_data = {
       camp_name,
-      image:final_image,
+      image: final_image,
       camp_fee,
       appointment_date,
       location,
@@ -51,18 +51,20 @@ const UpdateCamp = () => {
       participants,
       description,
     };
-    ApiInstance.patch(`/update-camp/${camp_object?._id}`, camp_data).then((res) => {
-      if (res.data.acknowledged) {
-        setLoading(false);
-        target.reset();
-        swalSuccess("Camp-Updated");
-        refetch()
-        navigate("/dashboard/manage-camps")
-      } else {
-        setLoading(false);
-        toastError("Something Went Wrong.Try Again!");
+    ApiInstance.patch(`/update-camp/${camp_object?._id}`, camp_data).then(
+      (res) => {
+        if (res.data.acknowledged) {
+          setLoading(false);
+          target.reset();
+          swalSuccess("Camp-Updated");
+          refetch();
+          navigate("/dashboard/manage-camps");
+        } else {
+          setLoading(false);
+          toastError("Something Went Wrong.Try Again!");
+        }
       }
-    });
+    );
   };
 
   return (
@@ -169,7 +171,7 @@ const UpdateCamp = () => {
             {loading ? (
               <span className="loading text-white loading-dots loading-sm"></span>
             ) : (
-              "Add Camp"
+              "Update Camp"
             )}
           </button>
         </fieldset>

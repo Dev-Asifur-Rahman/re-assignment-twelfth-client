@@ -29,6 +29,7 @@ function Home() {
       />
       <TopFavouriteCamp></TopFavouriteCamp>
       <ReviewSection></ReviewSection>
+      
     </div>
   );
 }
