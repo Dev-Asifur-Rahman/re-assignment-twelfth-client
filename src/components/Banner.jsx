@@ -12,25 +12,25 @@ const slides = [
     title: "500+ Patients Treated in One Day",
     description:
       "A landmark medical camp in Bogura provided care to over 500 people in 8 hours.",
-    image: "/public/banner-images/bannerimageone.webp",
+    image: "/banner-images/bannerimageone.webp",
   },
   {
     title: "Free Eye Surgeries for the Elderly",
     description:
       "120+ elderly citizens received cataract surgeries — bringing their world back into focus.",
-    image:"/public/banner-images/bannerimagetwo.jpg",
+    image:"/banner-images/bannerimagetwo.webp",
   },
   {
     title: "Hope and Healing Through Volunteers",
     description:
       "Dedicated medical students made a huge impact by providing care and compassion.",
-    image: "/public/banner-images/bannerimagethree.jpg",
+    image: "/banner-images/bannerimagethree.webp",
   },
   {
     title: "Smiles Returned to Children",
     description:
       "Essential vaccines and nutrition helped over 200 children towards a healthier future.",
-    image:"/public/banner-images/bannerimagefour.png",
+    image:"/banner-images/bannerimagefour.webp",
   },
 ];
 
