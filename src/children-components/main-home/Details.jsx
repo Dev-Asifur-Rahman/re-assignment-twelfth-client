@@ -6,6 +6,12 @@ import { Context } from "../../js/context";
 import { swalError, swalSuccess, toastError } from "../../js/utils";
 import { ApiInstance } from "../../js/api-instance";
 import useAllCamp from "../../hook/useAllCamp";
+import { ImPriceTag } from "react-icons/im";
+import { TbLocationFilled } from "react-icons/tb";
+import { FaUserDoctor } from "react-icons/fa6";
+import { MdPeopleAlt } from "react-icons/md";
+import { MdDateRange } from "react-icons/md";
+
 
 const Details = () => {
   const { refetch } = useAllCamp();
@@ -98,37 +104,36 @@ const Details = () => {
       description,
     } = camp;
     return (
-      <div className="w-full bg-gray-50 py-10 px-4">
+      <div className="w-full py-10 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden md:flex">
+          <div className=" rounded-2xl shadow-lg overflow-hidden md:flex">
             <img
               src={image}
               alt="Camp Name"
               className="w-full md:w-1/2 h-64 md:h-auto object-cover"
             />
             <div className="p-6 space-y-4 md:w-1/2">
-              <h1 className="text-3xl font-bold text-gray-800">{camp_name}</h1>
-              <p className="text-gray-600">{description}</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
-                <div>
-                  <span className="font-semibold">Fees:</span> {camp_fee} TK
+              <h1 className="text-3xl font-bold gradient-text">   {camp_name} </h1>
+              <p className="">{description}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
+                <div className="flex gap-2 items-center">
+                  <span><ImPriceTag /> </span> {camp_fee} TK
                 </div>
-                <div>
-                  <span className="font-semibold">Date </span>
+                <div className="flex gap-2 items-center">
+                  <span><MdDateRange /></span>
                   {appointment_date}
                 </div>
-                <div className="flex items-center flex-wrap">
-                  <p className="font-semibold">Healthcare Professional:</p>
+                <div className="flex items-center flex-wrap gap-2">
+                  <span><FaUserDoctor /></span>
                   <p>{professional_name}</p>
                 </div>
-                <div>
-                  <span className="font-semibold">Location:</span> {location}
+                <div className="flex gap-2 items-center">
+                  <span className=""><TbLocationFilled /></span> {location}
                 </div>
 
                 <div>
-                  <p className="font-semibold">
-                    Participants:
-                    <span className="font-normal">{participants}</span>
+                  <p className=" flex items-center gap-2">
+                    <span><MdPeopleAlt /></span> {participants} Registered
                   </p>
                 </div>
               </div>

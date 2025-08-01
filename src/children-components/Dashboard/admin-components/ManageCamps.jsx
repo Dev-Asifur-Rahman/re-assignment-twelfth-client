@@ -107,7 +107,7 @@ const ManageCamps = () => {
             key={i}
             onClick={() => setCurrentPage(i + 1)}
             className={`btn btn-sm ${
-              currentPage === i + 1 ? "bg-violet-500 text-white" : "bg-gray-200"
+              currentPage === i + 1 ? "bg-violet-500" : "bg-gray-200 dark:bg-inherit"
             }`}
           >
             {i + 1}

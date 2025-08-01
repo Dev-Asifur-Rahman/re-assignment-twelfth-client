@@ -155,7 +155,7 @@ const AvailableCamps = () => {
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
-          className="select select-bordered focus:outline-none
+          className="select lg:w-[250px] w-full md:w-[200px] select-bordered focus:outline-none
           "
         >
           <option value="default">Sort By: Default</option>

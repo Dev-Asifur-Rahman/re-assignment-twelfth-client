@@ -1,4 +1,7 @@
 import { Link } from "react-router";
+import { TbLocationFilled } from "react-icons/tb";
+import { FaUserDoctor } from "react-icons/fa6";
+import { MdPeopleAlt } from "react-icons/md";
 
 const CampCard = ({ camp }) => {
   const {
@@ -22,23 +25,23 @@ const CampCard = ({ camp }) => {
         <div className="p-4 space-y-2">
           <h2
             title={camp_name}
-            className="text-xl  font-semibold text-nowrap truncate overflow-hidden text-ellipsis "
+            className="text-lg  font-semibold text-nowrap truncate overflow-hidden text-ellipsis "
           >
             {camp_name}
           </h2>
-          <p className="text-sm ">
-            <span className="font-semibold">Location:</span>
+          <p className="text-sm flex gap-0.5 items-center">
+            <span className="font-semibold"> <TbLocationFilled /> </span>
             {location}
           </p>
-          <p className="text-sm ">
-            <span className="font-semibold">Doctor:</span>
+          <p className="text-sm flex gap-0.5 items-center">
+            <span className="font-semibold"><FaUserDoctor /> </span>
             {professional_name}
           </p>
-          <p className="text-sm ">
-            <span className="font-semibold">Participants:</span> {participants}
+          <p className="text-sm flex gap-0.5 items-center">
+            <span className="font-semibold"><MdPeopleAlt /></span> {participants} Registered
           </p>
           <Link to={`/camp-details/${_id}`}>
-            <button className="mt-4 font-semibold text-transparent bg-clip-text bg-gradient-to-bl from-violet-500 to-fuchsia-500">
+            <button className=" font-semibold text-transparent bg-clip-text bg-gradient-to-bl from-violet-500 to-fuchsia-500">
               Details →
             </button>
           </Link>
