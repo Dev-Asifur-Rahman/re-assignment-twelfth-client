@@ -167,7 +167,7 @@ const AvailableCamps = () => {
 
       {/* Camp Cards */}
       <div className="py-10 px-4 min-h-screen">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center">
           {currentCamps.map((camp) => (
             <CampCard key={camp._id} camp={camp} />
           ))}

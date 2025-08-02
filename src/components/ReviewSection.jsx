@@ -26,16 +26,16 @@ const FeedbackSection = () => {
             {visibleFeedback.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-xl p-6 pr-8 hover:scale-105 transition-transform duration-300 overflow-hidden"
+                className="bg-inherit dark:bg-black/10 rounded-lg shadow-xl p-6 pr-8 hover:scale-105 transition-transform duration-300 overflow-hidden"
               >
                 <div className="flex items-center gap-4 mb-5">
                   <img
                     src={item.photoURL}
                     alt="User"
-                    className="w-14 h-14 rounded-full border-4 border-violet-500 shrink-0"
+                    className="w-14 h-14 rounded-full border-2 border-violet-500 shrink-0"
                   />
                   <div className="flex flex-col overflow-hidden">
-                    <p className="font-semibold text-gray-900 truncate max-w-full">
+                    <p className="font-semibold  truncate max-w-full">
                       {item.email}
                     </p>
                     <div className="flex mt-1">
@@ -53,7 +53,7 @@ const FeedbackSection = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-700 italic text-lg break-words">
+                <p className="italic text-lg break-words">
                   “{item.feedback}”
                 </p>
               </div>

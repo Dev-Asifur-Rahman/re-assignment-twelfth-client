@@ -15,14 +15,14 @@ const CampCard = ({ camp }) => {
     description,
   } = camp;
   return (
-    <section className="p-0.5 w-4/5 transition-transform hover:scale-105 duration-200 rounded-[14px] bg-linear-to-bl from-violet-500 to-fuchsia-500">
+    <section className="p-0.5 lg:w-4/6 w-4/5 transition-transform hover:scale-105 duration-200 rounded-[14px] bg-linear-to-bl from-violet-500 to-fuchsia-500">
       <div className="rounded-xl shadow-md bg-white dark:bg-[#1d232a]   relative ">
         <img
           src={image}
           alt={camp_name}
-          className="w-full rounded-t-xl lg:h-48 md:h-48 h-36 object-cover"
+          className="w-full rounded-t-xl lg:h-36 md:h-36 h-36 object-cover"
         />
-        <div className="p-4 space-y-2">
+        <div className="px-4 py-2 space-y-2">
           <h2
             title={camp_name}
             className="text-lg  font-semibold text-nowrap truncate overflow-hidden text-ellipsis "
