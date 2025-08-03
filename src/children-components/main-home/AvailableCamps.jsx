@@ -123,9 +123,9 @@ const AvailableCamps = () => {
   return (
     <>
       {/* data query div  */}
-      <div className="w-full flex flex-col  md:flex-row items-center justify-between gap-4 px-4 my-4">
+      <div className="lg:w-5/6 md:w-5/6 mx-auto w-full flex flex-col  md:flex-row items-center justify-between gap-4 px-4 my-4">
         {/* Search Bar */}
-        <label className="input lg:w-[250px] w-full md:w-[200px] flex items-center gap-2  px-3 py-2 rounded focus-within:ring-0 focus-within:outline-none ">
+        <label className="input lg:w-[250px] w-full max-w-[300px] md:w-[250px] flex items-center gap-2  px-3 py-2 rounded focus-within:ring-0 focus-within:outline-none ">
           <svg
             className="h-5 w-5 opacity-50"
             xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +155,7 @@ const AvailableCamps = () => {
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
-          className="select lg:w-[250px] w-full md:w-[200px] select-bordered focus:outline-none
+          className="select lg:w-[250px] w-full max-w-[300px] md:w-[250px] select-bordered focus:outline-none
           "
         >
           <option value="default">Sort By: Default</option>
