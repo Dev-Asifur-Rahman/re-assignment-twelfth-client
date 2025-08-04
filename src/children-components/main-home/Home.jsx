@@ -5,6 +5,7 @@ import { NavLink } from "react-router";
 
 import TopFavouriteCamp from "../../components/TopFavouriteCamp";
 import ReviewSection from "../../components/ReviewSection";
+import CallToAction from "../../components/CallToAction";
 
 function Home() {
   return (
@@ -29,7 +30,7 @@ function Home() {
       />
       <TopFavouriteCamp></TopFavouriteCamp>
       <ReviewSection></ReviewSection>
-      
+      <CallToAction></CallToAction>
     </div>
   );
 }
