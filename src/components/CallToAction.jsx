@@ -13,7 +13,7 @@ const CallToAction = () => {
         </p>
 
         <NavLink to="/available-camps">
-          <button className="bg-linear-to-bl btn from-violet-500 to-fuchsia-500 font-semibold px-6  py-3 rounded-md shadow-md hover:scale-105 transition-transform duration-200">
+          <button className="bg-linear-to-bl btn text-white from-violet-500 to-fuchsia-500 font-semibold px-6  py-3 rounded-md shadow-md hover:scale-105 transition-transform duration-200">
             Explore Camps
           </button>
         </NavLink>
