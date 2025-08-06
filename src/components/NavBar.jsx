@@ -73,13 +73,13 @@ const NavBar = () => {
                   <ul
                     id="dropdown-navbar"
                     tabIndex={0}
-                    className=" flex flex-col flex-wrap w-fit menu-sm bg-base-100 dropdown-content mt-3 rounded-box z-1 shadow right-0"
+                    className=" flex flex-col border bg-white dark:bg-[#21272e] flex-wrap w-fit menu-sm  dropdown-content mt-3 rounded-box z-1 shadow right-0"
                   >
-                    <p className="text-center text-nowrap font-bold pt-6 pb-1 mx-7">
+                    <p className="text-center text-nowrap font-bold pt-4 pb-1 mx-7 gradient-text line-clamp-1">
                       {user ? user.displayName : "Unknown"}
                     </p>
                     <li
-                      className="border-b-2 border-b-gray-400 pb-1 pt-3 pl-3 font-medium"
+                      className="border-b border-b-gray-400 pb-1.5 pt-1 pl-5 font-medium"
                       onClick={() => {
                         setDropdown(false);
                         navigate("/available-camps");
@@ -88,7 +88,7 @@ const NavBar = () => {
                       Available Camps
                     </li>
                     <li
-                      className="border-b-2 border-b-gray-400 py-1 pl-3 font-medium"
+                      className="border-b border-b-gray-400 py-1.5 pl-5 font-medium"
                       onClick={() => {
                         setDropdown(false);
                         if (user && role) {
@@ -101,7 +101,7 @@ const NavBar = () => {
                       Dashboard
                     </li>
                     <li
-                      className="py-1 pl-3 font-medium"
+                      className="py-1.5 pl-5 font-medium"
                       onClick={() => {
                         signOut();
                         return setDropdown(false);

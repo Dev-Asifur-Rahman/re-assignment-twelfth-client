@@ -20,7 +20,7 @@
   font-weight: 500;
 }
 
-#nav-text a:hover {
+#nav-text a:hover, #dropdown-navbar li:hover {
   background: linear-gradient(to bottom left, #8b5cf6, #d946ef);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -176,6 +176,8 @@ th, .gradient-text {
 #camp-div input:focus,#appointment-date-button{
   outline: none;
 }
+
+/* #1d232a */
 
 /* bg-linear-to-bl from-violet-500 to-fuchsia-500 */
 
