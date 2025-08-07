@@ -112,10 +112,10 @@ const Details = () => {
               alt="Camp Name"
               className="w-full md:w-1/2 h-64 md:h-auto object-cover"
             />
-            <div className="p-6 space-y-4 md:w-1/2">
-              <h1 className="text-3xl font-bold gradient-text">   {camp_name} </h1>
-              <p className="">{description}</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
+            <div className="lg:p-6 md:p-4 p-3 lg:space-y-4 md:space-y-3 space-y-2 md:w-1/2  lg:rounded-r-2xl md:rounded-r-2xl border border-[#b800e6] lg:border-l-0 border-t-0 md:border-t lg:border-t rounded-b-2xl md:rounded-none lg:rounded-b-none">
+              <h1 className="lg:text-3xl md:text-2xl text-lg font-bold gradient-text">   {camp_name} </h1>
+              <p className="text-sm md:text-base lg:text-base">{description}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-2 lg:gap-4 ">
                 <div className="flex gap-2 items-center">
                   <span><ImPriceTag /> </span> {camp_fee} TK
                 </div>
@@ -139,7 +139,7 @@ const Details = () => {
               </div>
 
               <button
-                className="mt-6 w-full md:w-auto px-6 py-2 bg-gradient-to-bl from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 text-white font-medium rounded-xl transition-all duration-200 shadow-md"
+                className="mt-2 lg:mt-6 w-full md:w-auto px-6 py-2 bg-gradient-to-bl from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 text-white font-medium rounded-xl transition-all duration-200 shadow-md"
                 onClick={() => {
                   if (role) {
                     return toastError("Admin can't register");

@@ -25,7 +25,7 @@ const CampCard = ({ camp }) => {
         <div className="px-4 py-2 space-y-2">
           <h2
             title={camp_name}
-            className="text-lg  font-semibold text-nowrap truncate overflow-hidden text-ellipsis "
+            className="text-base  font-semibold text-nowrap truncate overflow-hidden text-ellipsis "
           >
             {camp_name}
           </h2>
@@ -41,7 +41,7 @@ const CampCard = ({ camp }) => {
             <span className="font-semibold"><MdPeopleAlt /></span> {participants} Registered
           </p>
           <Link to={`/camp-details/${_id}`}>
-            <button className=" font-semibold text-transparent bg-clip-text bg-gradient-to-bl from-violet-500 to-fuchsia-500">
+            <button className=" font-semibold cursor-pointer text-transparent bg-clip-text bg-gradient-to-bl from-violet-500 to-fuchsia-500">
               Details →
             </button>
           </Link>
