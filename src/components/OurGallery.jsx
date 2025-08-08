@@ -1,6 +1,6 @@
 const OurGallery = () => {
   return (
-    <section class="pb-16 bg-gray-50 dark:bg-gray-900">
+    <section class="pb-16">
       <div class="max-w-6xl mx-auto px-4">
         <div class="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
           <div class="break-inside-avoid rounded-xl overflow-hidden relative group shadow-lg">

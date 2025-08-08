@@ -28,7 +28,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="pb-16 dark:bg-gray-800">
+    <section className="lg:pb-16 md:pb-14">
       <div className="max-w-6xl mx-auto px-4 text-center">
         {/* Timeline */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between relative">

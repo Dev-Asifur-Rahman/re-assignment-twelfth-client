@@ -35,6 +35,7 @@ function Home() {
         description="Experience the top-rated camps that participants loved the most."
       />
       <TopFavouriteCamp></TopFavouriteCamp>
+      <CommonHeading heading={'User Feedback'}></CommonHeading>
       <ReviewSection></ReviewSection>
       <CommonHeading heading={'Our Achievements'} description={'Over the years, CampAID has welcomed hundreds of campers, provided top-quality programs, and created unforgettable memories. Here’s what we’re proud of.'}></CommonHeading>
       <Achievements></Achievements>

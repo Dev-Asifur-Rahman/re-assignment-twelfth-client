@@ -14,9 +14,6 @@ const FeedbackSection = () => {
 
   return (
     <div className="p-6 sm:p-10">
-      <h2 className="text-4xl font-bold gradient-text mb-10 text-center">
-        User Feedback
-      </h2>
 
       {isPending ? (
         <p className="text-center text-black text-xl">Loading feedback...</p>
