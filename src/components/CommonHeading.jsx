@@ -8,7 +8,7 @@ const CommonHeading = ({ heading, description }) => {
       <p className={`text-center lg:text-4xl gradient-text lg:font-bold font-semibold text-2xl md:text-3xl lg:my-2 my-1`}>
         {heading}
       </p>
-      <p className={` text-center  lg:text-lg text-base lg:font-medium font-base`}>
+      <p className={`text-center lg:w-3/5 md:w-[70%] w-4/5 mx-auto  lg:text-lg text-base `}>
         {description}
       </p>
     </div>

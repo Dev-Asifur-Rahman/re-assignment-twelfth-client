@@ -16,7 +16,7 @@ const CampCard = ({ camp }) => {
   } = camp;
   return (
     <section className="p-0.5 lg:w-4/6 w-4/5 transition-transform hover:scale-105 duration-200 rounded-[14px] bg-linear-to-bl from-violet-500 to-fuchsia-500">
-      <div className="rounded-xl shadow-md bg-white dark:bg-[#1d232a]   relative ">
+      <div className="rounded-xl shadow-md bg-white dark:bg-[#1d232a]  relative ">
         <img
           src={image}
           alt={camp_name}

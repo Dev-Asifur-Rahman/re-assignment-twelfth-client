@@ -13,7 +13,7 @@ const HomeCard = ({ camp }) => {
     professional_name,
   } = camp;
   return (
-    <div className="card mx-auto my-3 w-[230px] bg-white dark:bg-[#1d232a] dynamic-gradient-border card-xs shadow-lg relative dynamic-gradient-border ">
+    <div className="card mx-auto my-3 w-[230px] bg-gray-100 dark:bg-gray-800 dynamic-gradient-border card-xs shadow-lg relative dynamic-gradient-border ">
       <div className="flex flex-col gap-y-1">
         <img
           src={image}

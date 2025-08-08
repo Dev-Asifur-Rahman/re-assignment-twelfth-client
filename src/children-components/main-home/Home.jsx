@@ -7,6 +7,9 @@ import TopFavouriteCamp from "../../components/TopFavouriteCamp";
 import ReviewSection from "../../components/ReviewSection";
 import CallToAction from "../../components/CallToAction";
 import CampHighlights from "../../components/CampHighlights";
+import Achievements from "../../components/Achievements";
+import HowItWorks from "../../components/HowItWorks";
+import OurGallery from "../../components/OurGallery";
 
 function Home() {
   return (
@@ -33,6 +36,12 @@ function Home() {
       />
       <TopFavouriteCamp></TopFavouriteCamp>
       <ReviewSection></ReviewSection>
+      <CommonHeading heading={'Our Achievements'} description={'Over the years, CampAID has welcomed hundreds of campers, provided top-quality programs, and created unforgettable memories. Here’s what we’re proud of.'}></CommonHeading>
+      <Achievements></Achievements>
+      <CommonHeading heading={'How It Works'} description={'We make joining CampAID simple and stress-free. Follow these easy steps to start your adventure.'}></CommonHeading>
+      <HowItWorks></HowItWorks>
+      <CommonHeading heading={'Our Shining Moments'} description={'Take a glimpse into the unforgettable experiences our campers enjoy at CampAID.'}></CommonHeading>
+      <OurGallery></OurGallery>
       <CallToAction></CallToAction>
     </div>
   );
