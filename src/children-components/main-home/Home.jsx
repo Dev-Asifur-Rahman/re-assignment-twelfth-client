@@ -6,11 +6,14 @@ import { NavLink } from "react-router";
 import TopFavouriteCamp from "../../components/TopFavouriteCamp";
 import ReviewSection from "../../components/ReviewSection";
 import CallToAction from "../../components/CallToAction";
+import CampHighlights from "../../components/CampHighlights";
 
 function Home() {
   return (
     <div className="">
       <Banner></Banner>
+      <CommonHeading heading={'Why Choose CampAID?'} description={'Discover what makes our camps an unforgettable experience for every child.'}></CommonHeading>
+      <CampHighlights></CampHighlights>
       <CommonHeading
         heading="Most Popular Medical Camps"
         description="Explore top-attended camps that made the biggest impact on communities."

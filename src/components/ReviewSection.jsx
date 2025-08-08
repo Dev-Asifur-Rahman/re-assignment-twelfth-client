@@ -26,7 +26,7 @@ const FeedbackSection = () => {
             {visibleFeedback.map((item, index) => (
               <div
                 key={index}
-                className="bg-inherit dark:bg-black/10 rounded-lg shadow-xl p-6 pr-8 hover:scale-105 transition-transform duration-300 overflow-hidden"
+                className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-xl p-6 pr-8 hover:scale-105 transition-transform duration-300 overflow-hidden"
               >
                 <div className="flex items-center gap-4 mb-5">
                   <img

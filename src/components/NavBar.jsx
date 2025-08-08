@@ -5,7 +5,10 @@ import { toastError, toastSuccess } from "../js/utils";
 import { NavLink, useNavigate } from "react-router";
 import icon from "../assets/user_icon.svg";
 import ToggleMode from "./ToggleMode";
-import camplogo from '../assets/images/camp-logo-v-six.png'
+import camplogo from "../assets/images/camp-logo-v-six.png";
+import { PiSignOutBold } from "react-icons/pi";
+import { FaHandHoldingMedical } from "react-icons/fa6";
+import { MdDashboard } from "react-icons/md";
 
 const NavBar = () => {
   const { user, role, mode } = useContext(Context);
@@ -31,11 +34,7 @@ const NavBar = () => {
         onClick={() => navigateHome("/")}
         className="inline-flex items-center gap-1 w-1/2 md:w-1/2 lg:w-fit hover:cursor-pointer"
       >
-        <img
-          src={camplogo}
-          className={`h-[25px] w-[25px]`}
-          alt=""
-        />
+        <img src={camplogo} className={`h-[25px] w-[25px]`} alt="" />
         <p className="text-xl  md:text-2xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-bl from-violet-500 to-fuchsia-500  font-extrabold md:inline lg:inline">
           CampAID
         </p>
@@ -79,16 +78,19 @@ const NavBar = () => {
                       {user ? user.displayName : "Unknown"}
                     </p>
                     <li
-                      className="border-b border-b-gray-400 pb-1.5 pt-1 pl-5 font-medium"
+                      className="border-b border-b-gray-400 pb-1.5 pt-1 pl-1 font-medium"
                       onClick={() => {
                         setDropdown(false);
                         navigate("/available-camps");
                       }}
                     >
+                      <span>
+                        <FaHandHoldingMedical />
+                      </span>{" "}
                       Available Camps
                     </li>
                     <li
-                      className="border-b border-b-gray-400 py-1.5 pl-5 font-medium"
+                      className="border-b border-b-gray-400 py-1.5 pl-1 font-medium"
                       onClick={() => {
                         setDropdown(false);
                         if (user && role) {
@@ -98,15 +100,21 @@ const NavBar = () => {
                         }
                       }}
                     >
+                      <span>
+                        <MdDashboard className="hover:"/>
+                      </span>{" "}
                       Dashboard
                     </li>
                     <li
-                      className="py-1.5 pl-5 font-medium"
+                      className="py-1.5 pl-1 font-medium"
                       onClick={() => {
                         signOut();
                         return setDropdown(false);
                       }}
                     >
+                      <span>
+                        <PiSignOutBold />
+                      </span>{" "}
                       SignOut
                     </li>
                   </ul>

@@ -20,7 +20,7 @@
   font-weight: 500;
 }
 
-#nav-text a:hover, #dropdown-navbar li:hover {
+#nav-text a:hover{
   background: linear-gradient(to bottom left, #8b5cf6, #d946ef);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -33,6 +33,8 @@
 }
 
 #dropdown-navbar li {
+  display: flex;
+  align-items: center;
   font-size: 14px;
   cursor: pointer;
 }
@@ -43,6 +45,7 @@
   flex-direction: column;
   gap: 16px;
 }
+
 
 .dashboard-navigation a.light {
   font-size: 14px;
