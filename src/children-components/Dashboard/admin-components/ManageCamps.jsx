@@ -63,8 +63,8 @@ const ManageCamps = () => {
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Date</th>
-              <th>Location</th>
+              <th className=" text-center">Date</th>
+              <th className="">Location</th>
               <th>Professional</th>
               <th className="text-center">Edit</th>
               <th className="flex justify-center">Delete</th>
@@ -75,8 +75,8 @@ const ManageCamps = () => {
               <tr key={camp?._id}>
                 <th>{firstIndex + index + 1}</th>
                 <td>{camp?.camp_name}</td>
-                <td>{camp?.appointment_date}</td>
-                <td>{camp?.location}</td>
+                <td className=" text-center">{camp?.appointment_date}</td>
+                <td className="">{camp?.location}</td>
                 <td>{camp?.professional_name}</td>
                 <td className="text-center">
                   <button

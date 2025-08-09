@@ -69,7 +69,7 @@ const ManageRegisteredCamps = () => {
               <th></th>
               <th>Name</th>
               <th>Camp Name</th>
-              <th>Camp Fee</th>
+              <th className="text-center">Camp Fee</th>
               <th className="text-center">Payment Status</th>
               <th className="text-center">Confirmation Status</th>
               <th className="text-center">Cancel</th>
@@ -81,7 +81,7 @@ const ManageRegisteredCamps = () => {
                 <th>{firstIndex + index + 1}</th>
                 <td>{user?.patient}</td>
                 <td>{user?.camp_name}</td>
-                <td>{user?.camp_fee} TK</td>
+                <td className="text-center">{user?.camp_fee} TK</td>
                 <td className="text-center">
                   {user?.payment_status ? "Paid" : "Unpaid"}
                 </td>

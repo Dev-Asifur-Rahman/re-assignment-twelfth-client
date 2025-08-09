@@ -63,9 +63,9 @@ const PaymentHistory = () => {
                 <tr>
                   <th></th>
                   <th>Camp Name</th>
-                  <th>Fee</th>
+                  <th className="text-center">Fee</th>
                   <th>Transaction No</th>
-                  <th>Date</th>
+                  <th className="text-center">Date</th>
                   <th className=" text-center">Payment Status</th>
                 </tr>
               </thead>
@@ -88,9 +88,9 @@ const PaymentHistory = () => {
                     <tr key={payment?._id}>
                       <th>{indexOfFirst + index + 1}</th>
                       <td>{payment?.camp_name}</td>
-                      <td>{payment?.fee}</td>
+                      <td className="text-center">{payment?.fee} TK</td>
                       <td>{payment?.transactionId}</td>
-                      <td>{bdtDate}</td>
+                      <td className="text-center">{bdtDate}</td>
                       <td className="text-center">{payment?.payment_status && "Paid"}</td>
                     </tr>
                   );
