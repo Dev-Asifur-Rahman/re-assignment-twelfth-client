@@ -1,10 +1,14 @@
 import { Link } from "react-router";
-import GlareHover from "../Component_Style/GlareHover";
+import { ImPriceTag } from "react-icons/im";
+import { TbLocationFilled } from "react-icons/tb";
+import { FaUserDoctor } from "react-icons/fa6";
+import { MdPeopleAlt } from "react-icons/md";
 
 const HomeCard = ({ camp }) => {
   const {
     _id,
     camp_name,
+    description,
     image,
     appointment_date,
     camp_fee,
@@ -21,32 +25,32 @@ const HomeCard = ({ camp }) => {
           alt=""
         />
         <div className="px-3 py-2">
-          <h2 className="text-[16px] font-semibold text-nowrap overflow-hidden">
+          <h2 className="text-base font-semibold text-nowrap overflow-hidden">
             {camp_name}
           </h2>
-          <div className="flex flex-col  gap-y-1">
-            <p className="text-[12px]">
-              Fee: <span className="font-semibold">{camp_fee} TK</span>
-            </p>
-            <p className="text-[12px]">
-              Date: <span className="font-semibold">{appointment_date}</span>
-            </p>
-            <p className="text-[12px] text-nowrap overflow-hidden">
-              Professional:
-              <span className="font-semibold text-nowrap">
-                {professional_name}
-              </span>
-            </p>
-            <p className="text-[12px]">
-              Location: <span className="font-semibold">{location}</span>
-            </p>
-            <p className="text-[12px]">
-              Participants:{" "}
-              <span className="font-semibold">{participants}</span>
-            </p>
+          <p className="line-clamp-3 text-sm mt-2">{description}</p>
+          <div className="border-b my-2"></div>
+          <div className="flex flex-col text-[12px] gap-y-1">
+            <div className="flex justify-between items-center font-bold">
+              <div className="flex gap-2 items-center ">
+                <span>
+                  <ImPriceTag />
+                </span>
+                {camp_fee} TK
+              </div>
+              <div>
+                <p className=" flex items-center gap-2">
+                  <span>
+                    <MdPeopleAlt />
+                  </span>
+                  {participants} Joined
+                </p>
+              </div>
+            </div>
+            <div className="border-b my-1"></div>
           </div>
           <div className="w-full flex justify-end">
-            <button className="btn btn-sm text-white bg-linear-to-bl from-violet-500 to-fuchsia-500">
+            <button className="btn btn-sm text-white bg-linear-to-bl from-violet-500 to-fuchsia-500 my-2">
               <Link to={`/camp-details/${_id}`}>join Camp</Link>{" "}
             </button>
           </div>

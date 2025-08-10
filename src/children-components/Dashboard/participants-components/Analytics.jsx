@@ -36,17 +36,22 @@ const Analytics = () => {
             heading="Analytics Overview"
             description="Gain insights into camp participation and overall impact."
           />
-          <div className="border w-full lg:w-4/6 md:w-4/5 mx-auto h-[250px] md:h-[300px] lg:h-[300px] ">
+          <div className="w-full lg:w-4/6 md:w-4/5 mx-auto h-[250px] md:h-[300px] lg:h-[350px] ">
             <ResponsiveContainer width="100%" height="100%">
               <ComposedChart data={registered_camp}>
                 <CartesianGrid stroke="#f5f5f5" />
                 <XAxis
+                  height={80}
                   dataKey="camp_name"
-                  angle={-45}
+                  className="lg:text-base md:text-sm text-[12px]"
+                  angle={-25}
                   textAnchor="end"
                   interval={0}
                 />
-                <YAxis width={30} className="text-[10px]" />
+                <YAxis
+                  width={30}
+                  className="text-[10px] md:text-base text-xl"
+                />
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="camp_fee" barSize="10%" fill="#413ea0" />

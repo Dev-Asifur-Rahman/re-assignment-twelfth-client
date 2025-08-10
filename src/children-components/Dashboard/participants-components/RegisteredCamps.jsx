@@ -107,9 +107,9 @@ const RegisteredCamps = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Camp Name</th>
-              <th>Camp Fee</th>
               <th>Name</th>
+              <th>Camp Name</th>
+              <th>Fee</th>
               <th className="text-center">Payment Status</th>
               <th className="text-center">Confirmation Status</th>
               <th className="text-center">Cancel</th>
@@ -203,12 +203,12 @@ const RegisteredCamps = () => {
       {/* Feedback Modal */}
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center z-50  backdrop-blur-sm bg-black/20">
-          <div className="bg-white p-6 rounded-xl w-[90%] max-w-md shadow-lg border border-gray-200">
+          <div className="p-6 rounded-xl w-[90%] max-w-md shadow-lg border border-gray-200 bg-white dark:bg-inherit">
             <h2 className="text-xl font-bold mb-4">Give Your Feedback</h2>
 
             <textarea
               required
-              className="textarea textarea-bordered w-full mb-4"
+              className="textarea textarea-bordered w-full mb-4 focus:border-none"
               placeholder="Write your feedback..."
               value={feedback}
               onChange={(e) => setFeedback(e.target.value)}

@@ -7,7 +7,9 @@ import { MdManageAccounts } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import { MdAddHome } from "react-icons/md";
 import { MdAssignmentAdd } from "react-icons/md";
-
+import { IoMdAnalytics } from "react-icons/io";
+import { FaUserPen } from "react-icons/fa6";
+import { MdManageHistory } from "react-icons/md";
 
 import NavBar from "../components/NavBar";
 
@@ -29,13 +31,12 @@ const Dashboard = () => {
     {
       href: "/dashboard/add-camp",
       route: "Add a Camp",
-      icon:<MdAddHome />,
-
+      icon: <MdAddHome />,
     },
     {
       href: "/dashboard/registered-camps",
       route: "Registered Camps",
-      icon:<MdAssignmentAdd />,
+      icon: <MdAssignmentAdd />,
     },
   ];
 
@@ -43,18 +44,22 @@ const Dashboard = () => {
     {
       href: "/dashboard/analytics",
       route: "Analytics",
+      icon: <IoMdAnalytics />
     },
     {
       href: "/dashboard/participant-profile",
       route: "Profile",
+      icon :<FaUserPen />
     },
     {
       href: "/dashboard/history",
       route: "Payment History",
+      icon : <MdManageHistory />
     },
     {
       href: "/dashboard/user-registered-camps",
       route: "Registerd Camps",
+      icon:<MdAssignmentAdd />,
     },
   ];
 
@@ -99,7 +104,10 @@ const Dashboard = () => {
                   }
                   to={route.href}
                 >
-                  {route.route}
+                  <span className="flex gap-1 items-center">
+                    {route.icon}
+                    {route.route}
+                  </span>
                 </NavLink>
               ))}
             </div>

@@ -12,7 +12,6 @@ import { FaUserDoctor } from "react-icons/fa6";
 import { MdPeopleAlt } from "react-icons/md";
 import { MdDateRange } from "react-icons/md";
 
-
 const Details = () => {
   const { refetch } = useAllCamp();
   const { user, role } = useContext(Context);
@@ -112,28 +111,46 @@ const Details = () => {
               alt="Camp Name"
               className="w-full md:w-1/2 h-64 md:h-auto object-cover"
             />
-            <div className="lg:p-6 md:p-4 p-3 lg:space-y-4 md:space-y-3 space-y-2 md:w-1/2  lg:rounded-r-2xl md:rounded-r-2xl border border-[#b800e6] lg:border-l-0 border-t-0 md:border-t lg:border-t rounded-b-2xl md:rounded-none lg:rounded-b-none">
-              <h1 className="lg:text-3xl md:text-2xl text-lg font-bold gradient-text">   {camp_name} </h1>
+            <div
+              className="p-3 space-y-2 border border-[#b800e6] border-t-0 rounded-b-2xl md:p-4 md:space-y-3 md:w-1/2 md:border-t md:rounded-none md:rounded-r-2xllg:p-6 lg:space-y-4 lg:border-l-0 lg:border-t lg:border-b lg:rounded-r-2xl lg:rounded-l-none"
+            >
+              <h1 className="lg:text-3xl md:text-2xl text-lg font-bold gradient-text">
+                {" "}
+                {camp_name}{" "}
+              </h1>
               <p className="text-sm md:text-base lg:text-base">{description}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-2 lg:gap-4 ">
                 <div className="flex gap-2 items-center">
-                  <span><ImPriceTag /> </span> {camp_fee} TK
+                  <span>
+                    <ImPriceTag />{" "}
+                  </span>{" "}
+                  {camp_fee} TK
                 </div>
                 <div className="flex gap-2 items-center">
-                  <span><MdDateRange /></span>
+                  <span>
+                    <MdDateRange />
+                  </span>
                   {appointment_date}
                 </div>
                 <div className="flex items-center flex-wrap gap-2">
-                  <span><FaUserDoctor /></span>
+                  <span>
+                    <FaUserDoctor />
+                  </span>
                   <p>{professional_name}</p>
                 </div>
                 <div className="flex gap-2 items-center">
-                  <span className=""><TbLocationFilled /></span> {location}
+                  <span className="">
+                    <TbLocationFilled />
+                  </span>{" "}
+                  {location}
                 </div>
 
                 <div>
                   <p className=" flex items-center gap-2">
-                    <span><MdPeopleAlt /></span> {participants} Registered
+                    <span>
+                      <MdPeopleAlt />
+                    </span>{" "}
+                    {participants} Registered
                   </p>
                 </div>
               </div>
